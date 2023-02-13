@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>Services and Brief Historys</title><link rel="shortcut icon" href="http://www.cmaps.co/square_c.png">
+
+
+<style>
+.btn-group .button {
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 33.3%;
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  padding-top: 8px;
+  float: left;
+  width: 50%;
+
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+</head>
+
+<body>
+<div class="header" id="myHeader">
+  <center><h4 style="font-family:Trebuchet MS;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
+  <center><h4 style="font-family:Trebuchet MS;">In the meantime, please direct inquiries to: smith@cmaps.co</h4>
+</div>
+
+<div class="btn-group">
+<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='http://www.cmaps.co'" type="button">Home</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='http://www.cmaps.co/map_ex'" type="button">Basic Interactive Map</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='http://www.cmaps.co/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+</div>
+
+<div class="row">
+  <div class="column">
+    <p style="font-family:Trebuchet MS; padding-top: 50px; padding-bottom: 20px; padding-left: 30px;">Having gained exposure to GIS while at Penn State and in turn interning with the National Park Service, I landed a typical entry level GIS tech role with an environmental evaluation company. After demonstrating my capabilities I earned the GIS Specialist position aiding the company's Aerial, Fire Insurance, Geocoding and Topo Departments. In 2013 they were bought out and that afforded me the opportunity to begin consulting both on-site as well as remotely.</p> 
+    <center><img src="http://www.cmaps.co/fuzedge.png" width="350" height="550" class="center" style="padding-top:65px;padding-bottom:65px">
+
+  </div>
+  <div class="column">
+    <center><img src="http://www.cmaps.co/rec_logo.png" width="400" height="310" class="center" style="padding-top:65px;padding-bottom:65px;"></center>
+        <p style="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;padding-right:20px;">Which brings us to today where I serve as a seamless extension to GIS departments that need just that extra little bit of help and/or guidance. If that sounds like your situation or if you don't currently have any GIS capabilities of your own feel free to reach out. That's what I'm here for!</p>
+    <left><p style="font-family:Trebuchet MS;; padding-left: 30px;">Would love to help your vision fulfill its potential. Reach out if you need:</p>
+    <ulstyle="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
+        <li style="padding-left: 60px;">Route Optimization</li>
+        <li style="padding-left: 60px;">Site Selection</li>
+        <li style="padding-left: 60px;">Viewshed Analysis</li>
+        <li style="padding-left: 60px;">Asset Management</li>
+        <li style="padding-left: 60px;">Data Acquisition</li>
+        <li style="padding-left: 60px;">Image Classification</li>
+        <li style="padding-left: 60px;">Custom Maps</li>
+    </ul> 
+  </div></left>
+</div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+
+</body>
+</html>

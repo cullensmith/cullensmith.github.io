@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html>
+<head><title>Example</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" ref="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+
+
+
+
+</head>
+<style>
+html,
+body {
+	height: 100%;
+}
+
+.parent {
+	display: flex;
+	flex-flow:column;
+	height: 100%;  
+}
+
+.child-top {
+	flex: 0 1 50px;
+	background-color: white;
+	color:white;
+}
+
+.child-bottom {
+	flex: 1 1 auto;
+}
+
+</style>
+ <div class="parent">
+	<div class="child-top" id="panel">Select by Circle</div>
+	<div class="child-bottom" id="map"></div>
+</div>
+<script>
+var url = "http://cmaps.co/map_ex/leaflet/src/data/coors.geojson";
+var url2 = "http://cmaps.co/map_ex/leaflet/src/data/cbgs.geojson";
+var test = [];
+var geojsonLayer;
+
+
+var map = L.map('map').setView([37.52715,-96.877441], 10); 
+
+var osm=new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',{ 
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+
+
+// Set function for color ramp
+function getColor(statefp){
+    return statefp=='48' ? 'green' :
+            statefp != '48' ? 'red' :
+                            'white';
+}
+
+			
+function forEachFeature(feature, layer) {
+        var popupContent = "<p>The <b>" +
+                feature.properties.statefp + "</b> play here,</br> They are in the " +
+                feature.properties.amenity + "</br>" +
+                '<a href="'+ feature.properties.statefp +'" target="_blank">Website</a></p>' ;        
+        if (feature.properties && feature.properties.popupContent) {
+            popupContent += feature.properties.popupContent;
+        }
+            layer.bindPopup(popupContent);
+};
+
+	  var bbTeam = L.geoJSON(null, {
+			onEachFeature: forEachFeature, 
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng, {
+					radius:6,
+					opacity: .5,
+					//color: "#000",
+					color:getColor(feature.properties.statefp),
+					fillColor:  getColor(feature.properties.statefp),
+					fillOpacity: 0.8
+
+				}).bindTooltip(feature.properties.statefp);
+
+			}
+	  });
+
+
+
+// Get GeoJSON data and create features.
+
+$.getJSON(url2, function(data) {
+        bbTeam.addData(data);
+});
+bbTeam.addTo(map);
+
+var thepts = new L.GeoJSON.AJAX(url2);       
+thepts.addTo(map);
+
+
+///// Draw controls
+// Initialise the FeatureGroup to store editable layers
+
+drawfeatureGroup = L.featureGroup().addTo(map);
+var options = {
+    position: 'topleft',
+    draw: {
+        polyline:false,
+        polygon: {
+            allowIntersection: false, // Restricts shapes to simple polygons
+            drawError: {
+                color: 'red', // Color the shape will turn when intersects
+                message: '<strong>Oh snap!<strong> you can\'t draw that!'
+            },
+            shapeOptions: {
+                color: 'blue'
+            }
+        },
+		circlemarker: false,
+		
+        circle: {
+			shapeOptions: {
+				stroke: true,
+				color: 'blue',  //'#f06eaa',
+				weight: 4,
+				opacity: 0.5,
+				fill: true,
+				fillColor: null, //same as color by default
+				fillOpacity: 0.2,
+				clickable: true
+				},
+		showRadius: true,
+		metric: false 
+		},
+        rectangle: false,
+        marker: false
+    },
+    edit: {
+    featureGroup: drawfeatureGroup, 
+    edit: true 
+    }, 
+};
+
+var drawControl =  new L.Control.Draw(options);
+map.addControl(drawControl);
+// add leaflet-geoman controls with some options to the map
+
+
+map.on('draw:created', function (e) {
+    if (geojsonLayer != undefined) {
+            map.removeLayer(geojsonLayer);
+    };
+    /*
+    test = [];
+    drawfeatureGroup.clearLayers();
+    var type = e.layerType,
+    layer = e.layer;
+    drawfeatureGroup.addLayer(layer);
+    */
+    if (e.layerType == 'polygon' ) {
+        test = [];
+        drawfeatureGroup.clearLayers();
+        var type = e.layerType,
+        layer = e.layer;
+        drawfeatureGroup.addLayer(layer);
+    GetSelection(drawfeatureGroup );
+    }
+    else {
+        test = [];
+        console.log('Layer created: ' + L.stamp(e.layer));
+
+        
+
+
+        drawfeatureGroup.clearLayers();
+        e.layer.options.color='red';
+        e.layer.on('edit', logProps);
+        var type = e.layerType,
+
+        layer = e.layer;
+
+        drawfeatureGroup.addLayer(layer);
+        console.log(JSON.stringify(layer.toGeoJSON));
+
+    GetSelection(drawfeatureGroup );
+    }
+    });
+
+    function logProps(e) {
+    console.log('Layer edited: ' + L.stamp(e.target));
+    console.log('Color: ' + e.target.options.previousOptions.color);
+    }
+	//  points in poly (Not Circle)
+	function GetSelection(layer){
+			var pts = bbTeam.toGeoJSON();
+            console.log(JSON.stringify(layer.toGeoJSON));
+
+			ptsWithin2 = turf.pointsWithinPolygon(pts, layer.toGeoJSON());
+            alert('Found ' + ptsWithin2.features.length + ' features');	
+            console.log(JSON.stringify(ptsWithin2));
+	};
+
+map.on('draw:deleted', function (e) {
+    var layer = e.layer;
+    drawfeatureGroup.removeLayer(layer);
+    alert('draw deleted')
+});	
+	
+	
+	
+
+</script>
+</body>
+</html>

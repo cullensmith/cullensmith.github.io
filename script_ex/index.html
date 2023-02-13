@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>Some Scripts</title><link rel="shortcut icon" href="http://www.cmaps.co/square_c.png">
+
+
+<style>
+.btn-group .button {
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: #2e692f;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 33.3%;
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  padding-top: 8px;
+  float: left;
+  width: 50%;
+
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+</head>
+
+<body>
+<div class="header" id="myHeader">
+  <center><h4 style="font-family: monaco,monospace;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
+  <center><h4 style="font-family: monaco,monospace;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
+</div>
+
+<div class="btn-group">
+<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='http://www.cmaps.co'" type="button">Home</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='http://www.cmaps.co/map_ex'" type="button">Basic Interactive Map</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='http://www.cmaps.co/about'" type="button">Services and History</button>
+</div>
+
+<div class="row">
+  <div class="column">
+    <img src="http://www.cmaps.co/script_ex/pg_part.png" alt="postgis_ex" style="width:99.5%">
+    <img src="http://www.cmaps.co/script_ex/pygrass.png" alt="py_grass" style="width:99.5%">
+    <img src="http://www.cmaps.co/script_ex/pygdal.png" alt="py_gdal" style="width:99.5%">
+  </div>
+  <div class="column">
+    <img src="http://www.cmaps.co/script_ex/pythonex.png" alt="python_ex" style="width:100%">
+    <img src="http://www.cmaps.co/script_ex/pgfunc.png" alt="pgfunc" style="width:100%">
+  </div>
+</div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+
+</body>
+</html>

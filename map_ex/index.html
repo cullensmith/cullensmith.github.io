@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head><title>Rising Sea Levels</title></title><link rel="shortcut icon" href="http://www.cmaps.co/square_c.png">
+
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<link rel="stylesheet" ref="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+<script src="https://rawgit.com/dwilhelm89/LeafletSlider/master/SliderControl.js" type="text/javascript"></script>
+
+
+
+<style>
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+.btn-group .button {
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: #2e692f;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 33.3%;
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+
+
+.container2 {
+padding: 20px;
+height:20px;
+width:99%;
+align-items:center;
+background:none;
+}
+
+
+.slider-timestamp{width:100%}
+
+.ui-widget-content {
+background:#81afff;
+height: 10px;
+}
+
+.column {
+float: left;
+width: 50%;
+padding-left: 30px;
+padding-right: 30px;
+}
+
+#sliding-pane{
+    margin-top:200px;
+    position: absolute;
+    z-index: 1000;
+    width: 400px;
+    margin-left: -400px;
+    background: white;
+    transition: 1.5s;
+    max-height: 390px;
+    padding-top: -35px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+#sliding-pane.in{
+    margin-left:10px;
+}
+#overlay{min-height: 70px;
+box-shadow: 1px 1px 1px 1px grey;
+position: absolute;
+z-index: 1000;
+padding-top: 0px;
+padding-bottom: 15px;
+padding-left: 15px;
+padding-right: 15px;
+right: 0;
+margin: 10px;
+margin-right: 20px;
+border-radius: 10px;
+background: rgba(255,255,255,0.7);
+}
+#advanced-button(
+
+)
+</style>
+</head>
+<body>
+
+<div class="header" id="myHeader">
+  <center><h4 style="font-family: monaco,monospace;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
+  <center><h4 style="font-family: monaco,monospace;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
+</div>
+
+<div class="btn-group" style="width:100%">
+<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='http://www.cmaps.co'" type="button">Home</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='http://www.cmaps.co/about'" type="button">Services and History</button>
+<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='http://www.cmaps.co/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+</div>
+
+
+
+
+
+<div id="overlay">
+	<center><p>Check if a Landmark is Vulnerable<p>
+    <select id="theselected">
+        <option value="">--choose from a list--</option>
+    </select>
+
+    <br />
+    <p></p>
+    <p></p>
+	<button id="advanced-button" style="padding:5px";>Map Description Panel</button>
+
+    <div id="hoodinfo"></div>
+</div>
+
+<div id="sliding-pane">
+	<div ><p style="font-family: monaco,monospace; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise I was able to verify the impact on local infrastructure using Lidar data gathered by the USGS following 2013's Hurricane Sandy. Lidar data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as Lidar will allow you to account for elevated roads and bridges. Ths map will continue to evolve as time permits.</p>
+    </div>
+</div>
+
+
+
+
+<div id="map" padding-top="16px"; style="width: 100%; height: 600px; border: 1px solid #ccc"></div>
+
+<div class="container2">
+    <div id="custom-map-controls2"></div>
+</div>
+
+
+<div class="row">
+  <div class="column">
+    <p style="font-family: monaco,monospace;">Click on a building to see a pop up with attributes</p>
+    <p style="font-family: monaco,monospace;">Drag the slider bar to see varying water level scenarios</p>
+    <p style="font-family: monaco,monospace;">Draw a polygon to count the number of buildings in the area</p>
+    <p style="font-family: monaco,monospace;">Elements coming soon: </p>
+    <ulstyle="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
+    <li style="font-family: monaco,monospace;padding-left: 60px;">Vulnerability Analysis</li>
+    <li style="font-family: monaco,monospace;padding-left: 60px;">Highlighted Infrastructure</li>
+    <li style="font-family: monaco,monospace;padding-left: 60px;">Chart and Infographic Overlays</li>
+  </div>
+  <div class="column">
+    <img src="http://www.cmaps.co/map_ex/leaflet.png" alt="leaflet" style="width:20%" align="right">
+  </div>
+</div>
+
+
+
+
+
+<script>
+    
+	var cursorIcon = L.icon({
+		iconUrl: "https://www.cmaps.co/map_ex/flag.png",
+		iconSize: [16,16],
+		iconAnchor: [16,4],
+	})
+	$('#sliding-pane').height(window.innerHeight);
+	$(document).on('click','#advanced-button',function(){
+		if($('#sliding-pane').hasClass('in')) {
+			$('#sliding-pane').removeClass('in')
+		} else {
+			$('#sliding-pane').addClass('in')
+		}
+	});
+
+    var map = new L.Map('map', { center: new L.LatLng(42.36696663876715, -71.05850086223212), zoom: 17 });
+    var geojsonLayer;
+    var osmUrl = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+            osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            osm = L.tileLayer(osmUrl, { maxZoom: 20, attribution: osmAttrib }).addTo(map),
+            drawnItems = L.featureGroup().addTo(map);
+
+    var sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+    var states = new L.GeoJSON.AJAX("leaflet/src/data/states4326.geojson");
+
+    var bfoots = new L.GeoJSON.AJAX( "leaflet/src/data/buildings_smallb.geojson",{color:'black', weight:0.5, onEachFeature: function(feature,bfoots)
+            {
+                bfoots.bindPopup("Parcel ID: "+feature.properties.PARCEL_ID+"<br>Building Height: "+feature.properties.TOP_GROUND+"</br>");
+            }
+        }).addTo(map);
+
+    var cnts = new L.GeoJSON.AJAX("leaflet/src/data/bcents2.geojson");
+    var cnts2 = new L.GeoJSON.AJAX("leaflet/src/data/bcentroids.geojson");
+
+
+    var ssurge4 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge4.geojson");
+    var ssurge3 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge3.geojson");
+    var ssurge2 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge2.geojson");
+    var ssurge1 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge1.geojson").addTo(map);
+    var pois = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/pois.geojson");
+
+	//fetching data dynamically
+	var fetchedgeojson = false;
+	fetch('https://www.cmaps.co/map_testing/leaflet/src/data/pois.geojson',{
+		method: 'GET'
+	})
+	.then(response => response.json())
+	.then(json => {
+        // loop to get name list and add it to the dropdown
+        var htmlToAdd = ''
+        json.features.forEach(function(feature){
+        $('#theselected').append('<option value="'+feature.properties.name+'">'+feature.properties.name+'</option>');
+        });
+        
+		console.log(json)
+		hoodGeojson = L.geoJson(json,{
+			style: function (feature) {
+				return {
+					fillOpacity: 0
+				};
+			}
+		}).addTo(map);
+		fetchedgeojson = geojson;
+	})
+	.catch(error => console.log(error.message));
+
+
+
+    var control = L.control.layers({'OSM': osm, 'Satellite':sat}, {'High Tide': ssurge2, '10 Year Flood': ssurge3, '100 Year Flood': ssurge4, 'Buildings':bfoots}, { position: 'bottomright', collapsed: false }).addTo(map);
+
+    var lyrlist = [ssurge1, ssurge2, ssurge3, ssurge4];
+    layerGroup = L.layerGroup(lyrlist);
+
+    var sliderControl = L.control.sliderControl({
+    position: "topright",
+    layer: layerGroup,
+    follow: true
+    });
+
+    map.addControl(sliderControl);
+    sliderControl.startSlider();  
+
+
+    $(document).ready(function () {
+
+    var newParent = document.getElementById('custom-map-controls2');
+            var oldParent = document.getElementsByClassName("leaflet-top leaflet-right")
+            while (oldParent[0].childNodes.length > 0) {
+                newParent.appendChild(oldParent[0].childNodes[0]);
+            }
+    });
+
+
+    ///// Draw controls
+    // Initialise the FeatureGroup to store editable layers
+
+    drawfeatureGroup = L.featureGroup().addTo(map);
+    var options = {
+        position: 'topleft',
+        draw: {
+            polyline:false,
+            polygon: {
+                allowIntersection: false, // Restricts shapes to simple polygons
+                drawError: {
+                    color: 'red', // Color the shape will turn when intersects
+                    message: '<strong>Oh snap!<strong> you can\'t draw that!'
+                },
+                shapeOptions: {
+                    color: 'blue'
+                }
+            },
+            circlemarker: false,
+            circle: false,
+            /*
+            circle: {
+                shapeOptions: {
+                    stroke: true,
+                    color: 'blue',  //'#f06eaa',
+                    weight: 4,
+                    opacity: 0.5,
+                    fill: true,
+                    fillColor: null, //same as color by default
+                    fillOpacity: 0.2,
+                    clickable: false
+                    },
+            showRadius: true,
+            metric: false 
+            },
+            */
+            rectangle: true,
+            marker: false
+        },
+        edit: {
+        featureGroup: drawfeatureGroup, 
+        edit: true 
+        }, 
+    };
+
+
+    var drawControl =  new L.Control.Draw(options);
+    map.addControl(drawControl);
+    // add leaflet-geoman controls with some options to the map
+
+
+    map.on('draw:created', function (e) {
+        if (geojsonLayer != undefined) {
+                map.removeLayer(geojsonLayer);
+        };
+        if (e.layerType == 'polygon' ) {
+            test = [];
+            drawfeatureGroup.clearLayers();
+            var type = e.layerType,
+            layer = e.layer;
+            drawfeatureGroup.addLayer(layer);
+        GetSelection(drawfeatureGroup );
+        }
+        else {
+            test = [];
+            console.log('Layer created: ' + L.stamp(e.layer));
+
+            
+
+
+            drawfeatureGroup.clearLayers();
+            e.layer.options.color='red';
+            e.layer.on('edit', logProps);
+            var type = e.layerType,
+
+            layer = e.layer;
+
+            drawfeatureGroup.addLayer(layer);
+            console.log(JSON.stringify(layer.toGeoJSON));
+
+        GetSelection(drawfeatureGroup );
+        }
+        });
+        
+        function logProps(e) {
+        console.log('Layer edited: ' + L.stamp(e.target));
+        console.log('Color: ' + e.target.options.previousOptions.color);
+        }
+        //  points in poly (Not Circle)
+        function GetSelection(layer){
+                console.log(layer);
+                var pts = cnts.toGeoJSON();
+                var ptsa = cnts2.toGeoJSON();
+
+                console.log(JSON.stringify(layer.toGeoJSON));
+
+
+                var builds = bfoots.toGeoJSON()
+                var result = {
+                    "type": "FeatureCollection",
+                    "features": []
+                };
+
+                for (var i = 0; i < builds.features.length; i++) {
+                    result.features.push(
+                        {
+                            "type": "Feature",
+                            "properties": {"id": builds.features[i].properties.id},
+                            "geometry": turf.centroid(builds.features[i]).geometry
+                        }
+                    );
+                }
+
+
+                ind_addresses = turf.pointsWithinPolygon(pts, layer.toGeoJSON());
+                buildingcentroids = turf.pointsWithinPolygon(result, layer.toGeoJSON());
+
+                Swal.fire({
+                    text:'Found: ' + ind_addresses.features.length + ' Addresses Within ' + buildingcentroids.features.length + ' Structures',
+                    confirmButtonColor: '#9bcce9',
+                    confirmButtonText: 'Close'});	
+
+                console.log(JSON.stringify(ind_addresses));
+                console.log(JSON.stringify(buildingcentroids));
+        };
+        
+    map.on('draw:deleted', function (e) {
+        var layer = e.layer;
+        drawfeatureGroup.removeLayer(layer);
+        
+    });	
+
+
+    $(document).on('change','#theselected',function(e){
+        console.log(e);
+        var newHood = e.target.value;
+        if(newHood!='') {
+            hoodGeojson.eachLayer(function(layer) {
+                if(layer.feature.properties.name===e.target.value) {
+                    $('#hoodinfo').html(layer.feature.properties.Name);
+                    map.setView([layer.feature.properties.lat, layer.feature.properties.lon], 16);
+                }
+            });
+        } else {
+            $('#hoodino').html('');
+        }
+    });
+
+
+
+</script>
+</body>
+</html>
