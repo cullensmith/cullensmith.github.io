@@ -212,7 +212,7 @@ background: rgba(255,255,255,0.7);
 <script>
     
 	var cursorIcon = L.icon({
-		iconUrl: "https://www.cmaps.co/map_ex/flag.png",
+		iconUrl: "https://cullensmith.github.io/map_ex/flag.png",
 		iconSize: [16,16],
 		iconAnchor: [16,4],
 	})
@@ -248,15 +248,15 @@ background: rgba(255,255,255,0.7);
     var cnts2 = new L.GeoJSON.AJAX("leaflet/src/data/bcentroids.geojson");
 
 
-    var ssurge4 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge4.geojson");
-    var ssurge3 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge3.geojson");
-    var ssurge2 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge2.geojson");
-    var ssurge1 = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/surge1.geojson").addTo(map);
-    var pois = new L.GeoJSON.AJAX("https://www.cmaps.co/map_testing/leaflet/src/data/pois.geojson");
+    var ssurge4 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge4.geojson");
+    var ssurge3 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge3.geojson");
+    var ssurge2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge2.geojson");
+    var ssurge1 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge1.geojson").addTo(map);
+    var pois = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/pois.geojson");
 
 	//fetching data dynamically
 	var fetchedgeojson = false;
-	fetch('https://www.cmaps.co/map_testing/leaflet/src/data/pois.geojson',{
+	fetch('https://cullensmith.github.io/map_testing/leaflet/src/data/pois.geojson',{
 		method: 'GET'
 	})
 	.then(response => response.json())
