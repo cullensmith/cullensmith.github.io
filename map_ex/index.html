@@ -145,10 +145,10 @@ background: rgba(255,255,255,0.7);
 </head>
 <body>
 
-<div class="header" id="myHeader">
+<!-- <div class="header" id="myHeader">
   <center><h4 style="font-family: monaco,monospace;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
   <center><h4 style="font-family: monaco,monospace;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
-</div>
+</div> -->
 
 <div class="btn-group" style="width:100%">
 <button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='https://cullensmith.github.io'" type="button">Home</button>
@@ -248,15 +248,15 @@ background: rgba(255,255,255,0.7);
     var cnts2 = new L.GeoJSON.AJAX("leaflet/src/data/bcentroids.geojson");
 
 
-    var ssurge4 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge4.geojson");
-    var ssurge3 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge3.geojson");
-    var ssurge2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge2.geojson");
-    var ssurge1 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/surge1.geojson").addTo(map);
-    var pois = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_testing/leaflet/src/data/pois.geojson");
+    var ssurge4 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge4.geojson");
+    var ssurge3 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge3.geojson");
+    var ssurge2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge2.geojson");
+    var ssurge1 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge1.geojson").addTo(map);
+    var pois = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/pois.geojson");
 
 	//fetching data dynamically
 	var fetchedgeojson = false;
-	fetch('https://cullensmith.github.io/map_testing/leaflet/src/data/pois.geojson',{
+	fetch('https://cullensmith.github.io/map_ex/leaflet/src/data/pois.geojson',{
 		method: 'GET'
 	})
 	.then(response => response.json())
