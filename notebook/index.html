@@ -6,10 +6,84 @@
 <title>recruit_hometowns</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
-
+<div class="btn-group">
+  <button class="button" style="font-family:Trebuchet MS;" width="24%" onclick="location.href='http://cullensmith.github.io'" type="button">Home</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/map_ex'" type="button">Basic Interactive Map</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/about'" type="button">Services and History</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+</div>
 
 <style type="text/css">
-    pre { line-height: 125%; }
+
+
+
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 99%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group .button {
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: #2e692f;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 23%;
+  /* float: left; Float the buttons side by side */
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+
+
+
+pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
@@ -13979,11 +14053,20 @@ a.anchor-link {
     }
     init_mathjax();
     </script>
+
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="btn-group" id="the_buttons">
-    <button class="button" style="font-family:Trebuchet MS;" width="250px" onclick="location.href='https://cullensmith.github.io/'" type="button">Home</button>
-</div>
+
+
+<!-- <div class="btn-group">
+  <button class="button" style="font-family:Trebuchet MS;" width="24%" onclick="location.href='http://cullensmith.github.io'" type="button">Home</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/map_ex'" type="button">Basic Interactive Map</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/about'" type="button">Services and History</button>
+  <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+</div> -->
+
+<div><p> <br> <br> <br> <br> </p></div>
+
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Penn State Football Recruit Map (2014-2024)</strong></p>
