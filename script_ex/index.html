@@ -28,6 +28,38 @@
   color: white;
   background-color: #3e8e41;
 }
+.btn-group-jupyter .button {
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #d4d4d4; /* Green */
+  border: 2px solid rgb(184, 184, 184);
+  color: #838383;
+  padding: 40px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  height:200px;
+  width: 100%;
+  align: center;
+}
+
+.btn-group-jupyter .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group-jupyter .button:hover {
+  color: rgb(92, 92, 92);
+  background-color: #a1a1a1;
+}
+.centerBlock {
+  margin-left: 50px;
+  margin-right: 50px;
+  display:block;
+}
 /* Style the header */
 .header {
   padding: 3px 3px;
@@ -86,6 +118,23 @@
 <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/notebook'" type="button">Jupyter Notebook</button>
 </div>
 
+<div class="row">
+  <div class="column">
+    <div class="btn-group-jupyter">
+      <div class="centerBlock">
+        <button class="button" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://cullensmith.github.io/jupyter_scrape_example'" type="button">Launch a Jupyter Notebook Depicting How to Scrape, Parse and Map</button>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="btn-group-jupyter">
+      <div class="centerBlock">
+        <button class="button" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://cullensmith.github.io/jupyter_least_cost_path'" type="button">Launch a Jupyter Notebook Using Least Cost Path Analysis to Plan a Drone Flight Avoiding Obstacles</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
 <div class="row">
   <div class="column">
     <img src="https://cullensmith.github.io/script_ex/pg_part.png" alt="postgis_ex" style="width:99.5%">
