@@ -118,6 +118,7 @@
 <button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/notebooks'" type="button">Jupyter Notebook</button>
 </div>
 
+<p>Please click one of the large buttons below to launch a Jupyter Notebook. In order to display the interactive maps intact, I need to use Jupyter's HTML code which contains a ton of overrides so rather than fighting with the foratting I've included a 'Back' button at the top of each.</p>
 <div class="row">
   <div class="column">
     <div class="btn-group-jupyter">
@@ -136,33 +137,21 @@
 </div>
 
 
-
-<div class="row">
-  <div class="column">
-    <img src="https://cullensmith.github.io/script_ex/pg_part.png" alt="postgis_ex" style="width:99.5%">
-    <img src="https://cullensmith.github.io/script_ex/pygrass.png" alt="py_grass" style="width:99.5%">
-    <img src="https://cullensmith.github.io/script_ex/pygdal.png" alt="py_gdal" style="width:99.5%">
-  </div>
-  <div class="column">
-    <img src="https://cullensmith.github.io/script_ex/pythonex.png" alt="python_ex" style="width:100%">
-    <img src="https://cullensmith.github.io/script_ex/pgfunc.png" alt="pgfunc" style="width:100%">
-  </div>
-</div>
-
 <script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
+    window.onscroll = function() {myFunction()};
+    
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
 </script>
 
 </body>
 </html>
+    
