@@ -189,12 +189,17 @@ for x in here:
     <img src="https://cullensmith.github.io/script_ex/pygdal.png" alt="py_gdal" style="width:99.5%">
   </div>
   <div class="column">
-<p>Say you wanted to compare two tables in a PostgreSQL database, <br>
-one containing census tracts while the other has block attributes.<br>
-Now you're tasked with retreiving the block in each tract with the <br>
-highest population density. One way would be to use a partitioned table.</p>
+<!-- <p style='font-family:Trebuchet MS;'>Say you want to compare two tables in a PostgreSQL database, one containing census tracts while the other has block attributes. Now you're tasked with retreiving the block in each tract with the highest population density. One way would be to use a partitioned table.</p> -->
 <!-- <md-block> -->
-<pre><code class="language-sql">
+<pre><code class="language-sql">/************************************************************
+*Say you want to compare two tables in a PostgreSQL database, 
+*one containing census tracts while the other has block 
+*attributes. Now you're tasked with retreiving the block in 
+*each tract with the highest population density. One way 
+*would be to use a partitioned table.
+************************************************************/
+  
+  
 SELECT t.id, t.tract, b.block, b.population_density
 FROM censusdata.tracts t
 /*The left join retains all the elements in your tract 
@@ -204,8 +209,9 @@ LEFT JOIN (
   SELECT *
   FROM (
     /*This sub query partitions/groups the census blocks
-    on the 'tract' field and orders these smaller group 
-    in a decending fashion*/
+    on the 'tract' field and orders these smaller groups 
+    in a decending fashion so that the top row (#1) has
+    the most densely populated block*/
     SELECT *, 
 		row_number() over (
 			partition by tract
