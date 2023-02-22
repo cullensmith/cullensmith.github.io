@@ -136,8 +136,8 @@
 
 <!-- <body>
 <div class="header" id="myHeader">
-  <center><h4 style="font-family: monaco,monospace;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
-  <center><h4 style="font-family: monaco,monospace;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
+  <center><h4 style="font-family:Trebuchet MS;;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
+  <center><h4 style="font-family:Trebuchet MS;;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
 </div> -->
 
 <div class="btn-group">
@@ -189,9 +189,10 @@ for x in here:
     <img src="https://cullensmith.github.io/script_ex/pygdal.png" alt="py_gdal" style="width:99.5%">
   </div>
   <div class="column">
-<p>Say you wanted to compare two tables, one containing census tracts<br>
-while the other has block attributes. Now you want to retrieve the <br>
-block in each tract with the highest population density.</p>
+<p>Say you wanted to compare two tables in a PostgreSQL database, <br>
+one containing census tracts while the other has block attributes.<br>
+Now you're tasked with retreiving the block in each tract with the <br>
+highest population density. One way would be to use a partitioned table.</p>
 <!-- <md-block> -->
 <pre><code class="language-sql">
 SELECT t.id, t.tract, b.block, b.population_density
