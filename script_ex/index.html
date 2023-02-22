@@ -2,7 +2,7 @@
 <html>
 
 <head><title>Some Scripts</title><link rel="shortcut icon" href="https://cullensmith.github.io/images/square_c.png">
-
+<link href="themes/prism.css" rel="stylesheet" />
 
 <style>
 .btn-group .button {
@@ -176,24 +176,48 @@
 
 <div class="row">
   <div class="column">
-    <md-block>
-      ```python
-      for x in here:
-        print(x)
-      ```
-    </md-block>
+
+<!-- <script type="module" src="https://md-block.verou.me/md-block.js"></script> -->
+<!-- <md-block> -->
+```python
+for x in here:
+  print(x)
+```
+<!-- </md-block> -->
     <img src="https://cullensmith.github.io/script_ex/pg_part.png" alt="postgis_ex" style="width:99.5%">
     <img src="https://cullensmith.github.io/script_ex/pygrass.png" alt="py_grass" style="width:99.5%">
     <img src="https://cullensmith.github.io/script_ex/pygdal.png" alt="py_gdal" style="width:99.5%">
   </div>
   <div class="column">
-    <md-block>
-      ```sql
-      create table blah as 
-      select *
-      FROM origin.table
-      ```
-    </md-block>
+<p>Say you wanted to compare two tables, one containing census tracts<br>
+while the other has block attributes. Now you want to retrieve the <br>
+block in each tract with the highest population density.</p>
+<!-- <md-block> -->
+<pre><code class="language-sql">
+SELECT t.id, t.tract, b.block, b.population_density
+FROM censusdata.tracts t
+/*The left join retains all the elements in your tract 
+table while joining it up with any matching results 
+from the sub query below*/
+LEFT JOIN (
+  SELECT *
+  FROM (
+    /*This sub query partitions/groups the census blocks
+    on the 'tract' field and orders these smaller group 
+    in a decending fashion*/
+    SELECT *, 
+		row_number() over (
+			partition by tract
+			ORDER BY population_density desc
+		) as sorted_block_popdensity
+    FROM censusdata.blocks
+    ) subquery
+  --Grab the first element of the ordered group
+  WHERE sorted_block_popdensity = 1
+  --Now tell it what field(s) to join the two tables on
+  ) b on b.tract = t.tract
+</code></pre>
+<!-- </md-block> -->
     <img src="https://cullensmith.github.io/script_ex/pythonex.png" alt="python_ex" style="width:100%">
     <img src="https://cullensmith.github.io/script_ex/pgfunc.png" alt="pgfunc" style="width:100%">
   </div>
@@ -213,7 +237,8 @@ function myFunction() {
   }
 }
 </script>
-<script src="https://cullensmith.github.io/script_ex/js/prism.js"></script>
+<script src="prism.js"></script>
+<!-- <script src="https://md-block.verou.me/md-block.js"></script> -->
 
 </body>
 </html>
