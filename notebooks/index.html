@@ -110,6 +110,31 @@
   display: table;
 }
 
+.atag-img img {
+    /* border-radius: 10px; */
+    padding-top: 40px;
+    /* background-color: #ececec; 
+    border: 2px solid rgb(184, 184, 184);
+    color: #d4d4d4; */
+    width: 100%;
+    height: 100%;
+    /* padding-left: 30px;
+    padding-right: 30px; */
+    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
+/* }
+img { */
+    -webkit-filter: brightness(100%);
+}
+
+.atag-img img:hover {
+    -webkit-filter: brightness(92%);
+    /* -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease; */
+}
 </style>
 </head>
 
@@ -137,6 +162,13 @@
     <div class="btn-group-jupyter">
       <div class="centerBlock">
         <button class="bgj-img-size" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://cullensmith.github.io/jupyter_scrape_example'" type="button"><br>How to Scrape, Parse and Map<img src='images/geopandas.png'></button>
+      </div>
+    </div>
+    <div class="btn-group-jupyter">
+      <div class="centerBlock">
+        <!-- <button class="button" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://hourly-forecast.streamlit.app'" target="_blank" type="button">Launch a Cloud Hosted Weather Map App Utilizing Streamlit (opens new tab)</button>
+        <a class="bgj-img-size" style="font-family:Trebuchet MS;" width="40%" onclick="location.href=https://hourly-forecast.streamlit.app" target="_blank"><p>Launch a Cloud Hosted Weather Map App Utilizing Streamlit (opens new tab)</p> <img src='images/streamlit.png'></a> -->
+        <a class="atag-img" style="font-family:Trebuchet MS;" href="https://hourly-forecast.streamlit.app" target="_blank"><img src='images/streamlit_box.png'></a>
       </div>
     </div>
   </div>
