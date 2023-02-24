@@ -99,13 +99,20 @@ background:#81afff;
 height: 10px;
 }
 
-.column {
+.column-left {
 float: left;
-width: 50%;
-padding-left: 30px;
-padding-right: 30px;
+width: 75%;
+/* padding-left: 30px;
+padding-right: 30px; */
 }
-
+.column-right {
+float: left;
+width: 25%;
+padding-left: 10px;
+/* padding-top: -10px; */
+/* padding-left: 30px;
+padding-right: 30px; */
+}
 #sliding-pane{
     margin-top:200px;
     position: absolute;
@@ -133,7 +140,7 @@ padding-left: 15px;
 padding-right: 15px;
 right: 0;
 margin: 10px;
-margin-right: 20px;
+margin-right: 11px;
 border-radius: 10px;
 background: rgba(255,255,255,0.7);
 }
@@ -157,53 +164,67 @@ background: rgba(255,255,255,0.7);
 </div>
 
 
-
-<div id="overlay">
-	<center><p>Check if a Landmark is Vulnerable<p>
-    <select id="theselected">
-        <option value="">--choose from a list--</option>
-    </select>
-
-    <br />
-    <p></p>
-    <p></p>
-	<button id="advanced-button" style="padding:5px";>Map Description Panel</button>
-
-    <div id="hoodinfo"></div>
-</div>
-
-<div id="sliding-pane">
-	<div ><p style="font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve as time permits.</p>
-    </div>
-</div>
-
-
-
-
-<div id="map" padding-top="16px"; style="width: 100%; height: 600px; border: 1px solid #ccc"></div>
-
-<div class="container2">
-    <div id="custom-map-controls2"></div>
-</div>
-
-
 <div class="row">
-  <div class="column">
-    <p style="font-family:Trebuchet MS;">Click on a building to see a pop up with attributes</p>
-    <p style="font-family:Trebuchet MS;">Drag the slider bar to see varying water level scenarios</p>
-    <p style="font-family:Trebuchet MS;">Draw a polygon to count the number of buildings in the area</p>
-    <p style="font-family:Trebuchet MS;">Elements coming soon: </p>
-    <ulstyle="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Initial Instructions Pop-up upon Page Render</li>
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Connect to a Database Rather Than Pre-loaded GeoJSON</li>
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Include Cloud Optimized GeoTIFF Overlays</li>
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Vulnerability Analysis</li>
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Charts and Infographics</li>
-    <li style="font-family:Trebuchet MS;padding-left: 60px;">Clean up Aesthetics</li>
-  </div>
-  <div class="column">
-    <img src="https://cullensmith.github.io/map_ex/leaflet.png" alt="leaflet" style="width:20%" align="right">
-  </div>
+
+    <!-- <div id="overlay">
+        <center><p>Check if a Landmark is Vulnerable<p>
+        <select id="theselected">
+            <option value="">--choose from a list--</option>
+        </select>
+
+        <br />
+        <p></p>
+        <p></p>
+        <button id="advanced-button" style="padding:5px";>Map Description Panel</button>
+
+        <div id="hoodinfo"></div>
+    </div> -->
+    <div class="column-left">
+        <div id="sliding-pane">
+            <div ><p style="font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve as time permits.</p>
+            </div>
+        </div>
+
+
+
+
+        <div id="map" padding-top="80px"; style="width: 100%; height: 600px; border: 1px solid #ccc">
+            <div id="overlay">
+                <center><p>Check if a Landmark is Vulnerable<p>
+                <select id="theselected">
+                    <option value="">--choose from a list--</option>
+                </select>
+            
+                <br />
+                <p></p>
+                <p></p>
+                <button id="advanced-button" style="padding:5px";>Map Description Panel</button>
+            
+                <div id="hoodinfo"></div>
+            </div>
+        </div>
+
+        <div class="container2">
+            <div id="custom-map-controls2"></div>
+        </div>
+    </div>
+
+    <div class="column-right">
+        <p style="font-family:Trebuchet MS;">Click on a building to see a pop up with attributes</p>
+        <p style="font-family:Trebuchet MS;">Drag the slider bar to see varying water level scenarios</p>
+        <p style="font-family:Trebuchet MS;">Draw a polygon to count the number of buildings in the area (pentagon or square button in the top left corner)</p>
+        <p style="font-family:Trebuchet MS;">Elements coming soon: </p>
+        <ulstyle="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Initial Instructions Pop-up upon Page Render</li>
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Connect to a Database Rather Than Pre-loaded GeoJSON</li>
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Include Cloud Optimized GeoTIFF Overlays</li>
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Vulnerability Analysis</li>
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Charts and Infographics</li>
+        <li style="font-family:Trebuchet MS;padding-left: 0px;">Clean up Aesthetics</li>
+    </div>
+    <!-- <div class="column">
+        <img src="https://cullensmith.github.io/map_ex/leaflet.png" alt="leaflet" style="width:20%" align="right">
+    </div> -->
 </div>
 
 
