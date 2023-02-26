@@ -1,187 +1,153 @@
 <!DOCTYPE html>
-<html>
-<head><title>Rising Sea Levels</title></title><link rel="shortcut icon" href="https://cullensmith.github.io/images/square_c.png">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CMapS - Notebooks / Apps</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link href="../../../assets/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" ref="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://rawgit.com/dwilhelm89/LeafletSlider/master/SliderControl.js" type="text/javascript"></script>
+    
+    <style>
+    * {
+        box-sizing: border-box;
+      }
+      
+      
+      
+      .container2 {
+      padding: 20px;
+      height:20px;
+      width:99%;
+      align-items:center;
+      background:none;
+      }
+      
+      
+      .slider-timestamp{width:100%}
+      
+      .ui-widget-content {
+      background:#81afff;
+      height: 10px;
+      }
+      
+      .column-left {
+      float: left;
+      width: 75%;
+      /* padding-left: 30px;
+      padding-right: 30px; */
+      }
+      .column-right {
+      float: left;
+      width: 25%;
+      padding-left: 20px;
+      /* padding-top: -10px; */
+      /* padding-left: 30px;
+      padding-right: 30px; */
+      }
+      #sliding-pane{
+          margin-top:200px;
+          position: absolute;
+          z-index: 1000;
+          width: 400px;
+          margin-left: -700px;
+          background: white;
+          transition: 1.5s;
+          max-height: 390px;
+          padding-top: -35px;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 5px;
+      }
+      #sliding-pane.in{
+          margin-left:10px;
+      }
+      #overlay{min-height: 70px;
+      box-shadow: 1px 1px 1px 1px grey;
+      position: absolute;
+      z-index: 1000;
+      padding-top: 0px;
+      padding-bottom: 15px;
+      padding-left: 15px;
+      padding-right: 15px;
+      right: 0;
+      margin: 10px;
+      margin-right: 11px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.7);
+      }
+      /* #advanced-button(
+      
+      ) */
+      </style>
 
-
-
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" type="text/css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-<link rel="stylesheet" ref="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
-<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
-<script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
-<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-<script src="https://rawgit.com/dwilhelm89/LeafletSlider/master/SliderControl.js" type="text/javascript"></script>
-
-
-
-<style>
-/* Style the header */
-.header {
-  padding: 3px 3px;
-  background: #555;
-  color: #f1f1f1;
-}
-
-/* Page content */
-.content {
-  padding: 16px;
-}
-
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 102px;
-}
-
-* {
-  box-sizing: border-box;
-}
-.btn-group .button {
-  background-color: #6fcc52; /* Green */
-  border: 1px solid green;
-  color: #2e692f;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  width: 25%;
-  float: left; /* Float the buttons side by side */
-}
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  color: white;
-  background-color: #3e8e41;
-}
-
-
-.container2 {
-padding: 20px;
-height:20px;
-width:99%;
-align-items:center;
-background:none;
-}
-
-
-.slider-timestamp{width:100%}
-
-.ui-widget-content {
-background:#81afff;
-height: 10px;
-}
-
-.column-left {
-float: left;
-width: 75%;
-/* padding-left: 30px;
-padding-right: 30px; */
-}
-.column-right {
-float: left;
-width: 25%;
-padding-left: 10px;
-/* padding-top: -10px; */
-/* padding-left: 30px;
-padding-right: 30px; */
-}
-#sliding-pane{
-    margin-top:200px;
-    position: absolute;
-    z-index: 1000;
-    width: 400px;
-    margin-left: -400px;
-    background: white;
-    transition: 1.5s;
-    max-height: 390px;
-    padding-top: -35px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 5px;
-}
-#sliding-pane.in{
-    margin-left:10px;
-}
-#overlay{min-height: 70px;
-box-shadow: 1px 1px 1px 1px grey;
-position: absolute;
-z-index: 1000;
-padding-top: 0px;
-padding-bottom: 15px;
-padding-left: 15px;
-padding-right: 15px;
-right: 0;
-margin: 10px;
-margin-right: 11px;
-border-radius: 10px;
-background: rgba(255,255,255,0.7);
-}
-/* #advanced-button(
-
-) */
-</style>
 </head>
 <body>
+<div class="primary-nav">
+    <button href="#" class="hamburger open-panel nav-toggle">
+    <span class="screen-reader-text">Menu</span>
+    </button>
 
-<!-- <div class="header" id="myHeader">
-  <center><h4 style="font-family:Trebuchet MS;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
-  <center><h4 style="font-family:Trebuchet MS;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
-</div> -->
+    <nav role="navigation" class="menu">
 
-<div class="btn-group" style="width:100%">
-<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='https://cullensmith.github.io'" type="button">Home</button>
-<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='https://cullensmith.github.io/about'" type="button">Services and History</button>
-<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='https://cullensmith.github.io/notebooks'" type="button">Jupyter Notebooks</button>
-<button class="button" style="font-family:Trebuchet MS;" width="33.3%" onclick="location.href='https://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+        <a href="#" class="logotype"><img src="../../../images/rec_logo.png" width="130" class="center" ></a>
+
+        <div class="overflow-container">
+
+            <ul class="menu-dropdown">
+
+                <li><a href="https://cullensmith.github.io">HOME</a><span class="icon"><i class="fa fa-home"></i></span></li>
+
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/about">ABOUT</a><span class="icon"><i class="fa fa-user"></i></span>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/maps">MAPS</a><span class="icon"><i class="fa fa-image"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/notebooks">NOTEBOOKS / APPS</a><span class="icon"><i class="fa fa-code"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/script_ex">CHEATSHEETS</a><span class="icon"><i class="fa fa-list"></i></span>
+                </li>
+                <li><a href="#">CONTACT</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
 </div>
+
+<div class="new-wrapper">
+
+    <div id="main" style="margin:30px;">
+
+        <div id="main-contents">
+
 
 
 <div class="row">
 
-    <!-- <div id="overlay">
-        <center><p>Check if a Landmark is Vulnerable<p>
-        <select id="theselected">
-            <option value="">--choose from a list--</option>
-        </select>
-
-        <br />
-        <p></p>
-        <p></p>
-        <button id="advanced-button" style="padding:5px";>Map Description Panel</button>
-
-        <div id="hoodinfo"></div>
-    </div> -->
     <div class="column-left">
         <div id="sliding-pane">
-            <div ><p style="font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve as time permits.</p>
+            <div ><p style="font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve.</p>
             </div>
         </div>
 
@@ -210,21 +176,19 @@ background: rgba(255,255,255,0.7);
     </div>
 
     <div class="column-right">
-        <p style="font-family:Trebuchet MS;">Click on a building to see a pop up with attributes</p>
-        <p style="font-family:Trebuchet MS;">Drag the slider bar to see varying water level scenarios</p>
-        <p style="font-family:Trebuchet MS;">Draw a polygon to count the number of buildings in the area (pentagon or square button in the top left corner)</p>
-        <p style="font-family:Trebuchet MS;">Elements coming soon: </p>
-        <ulstyle="font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Initial Instructions Pop-up upon Page Render</li>
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Connect to a Database Rather Than Pre-loaded GeoJSON</li>
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Include Cloud Optimized GeoTIFF Overlays</li>
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Vulnerability Analysis</li>
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Charts and Infographics</li>
-        <li style="font-family:Trebuchet MS;padding-left: 0px;">Clean up Aesthetics</li>
+        <p style="color:white ;font-family:Trebuchet MS;">Click on a building to see a pop up with attributes</p>
+        <p style="color: white; font-family:Trebuchet MS;">Drag the slider bar to see varying water level scenarios</p>
+        <p style="color: white; font-family:Trebuchet MS;">Draw a polygon to count the number of buildings in the area (pentagon or square button in the top left corner)</p>
+        <p style="color: white; font-family:Trebuchet MS;"><u>Elements coming soon</u>: </p>
+        <ulstyle="color: white; font-family:Trebuchet MS; padding-bottom: 20px; padding-left: 30px;">
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Initial Instructions Pop-up upon Page Render</li>
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Connect to a Database Rather Than Pre-loaded GeoJSON</li>
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Include Cloud Optimized GeoTIFF Overlays</li>
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Vulnerability Analysis</li>
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Charts and Infographics</li>
+        <li style="color: white; font-family:Trebuchet MS;padding-left: 0px;">Clean up Aesthetics</li>
     </div>
-    <!-- <div class="column">
-        <img src="https://cullensmith.github.io/map_ex/leaflet.png" alt="leaflet" style="width:20%" align="right">
-    </div> -->
+
 </div>
 
 
@@ -479,5 +443,9 @@ background: rgba(255,255,255,0.7);
 
 
 </script>
+<script src="../../../js/slide.js"></script>
+
+</div></div>
+</div>
 </body>
 </html>
