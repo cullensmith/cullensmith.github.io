@@ -1,202 +1,105 @@
 <!DOCTYPE html>
-<html>
-
-<head><title>Jupyter Notebooks</title><link rel="shortcut icon" href="https://cullensmith.github.io/images/square_c.png">
-
-
-<style>
-.btn-group .button {
-  background-color: #6fcc52; /* Green */
-  border: 1px solid green;
-  color: #2e692f;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  width: 25%;
-  float: left; /* Float the buttons side by side */
-}
-
-.btn-group .button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-.btn-group .button:hover {
-  color: white;
-  background-color: #3e8e41;
-}
-.btn-group-jupyter .button {
-  border-radius: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background-color: #d4d4d4; /* Green */
-  border: 2px solid rgb(184, 184, 184);
-  color: #838383;
-  padding: 40px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  height:200px;
-  width: 100%;
-  align: center;
-}
-
-.btn-group-jupyter .button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-.btn-group-jupyter .button:hover {
-  color: rgb(92, 92, 92);
-  background-color: #a1a1a1;
-}
-
-.bgj-img-size img {
-    /* border-radius: 10px; */
-    width: 100%;
-    height: 100%;
-    padding: 30px;
-    /* padding-bottom: 30px; */
-}
-.centerBlock {
-  margin-left: 50px;
-  margin-right: 50px;
-  display:block;
-}
-/* Style the header */
-.header {
-  padding: 3px 3px;
-  background: #555;
-  color: #f1f1f1;
-}
-
-/* Page content */
-.content {
-  padding: 16px;
-}
-
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 102px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  padding-top: 8px;
-  float: left;
-  width: 50%;
-
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.atag-img img {
-    /* border-radius: 10px; */
-    padding-top: 40px;
-    /* background-color: #ececec; 
-    border: 2px solid rgb(184, 184, 184);
-    color: #d4d4d4; */
-    width: 100%;
-    height: 100%;
-    /* padding-left: 30px;
-    padding-right: 30px; */
-    padding-bottom: 30px;
-    /* padding-bottom: 30px; */
-/* }
-img { */
-    -webkit-filter: brightness(100%);
-}
-
-.atag-img img:hover {
-    -webkit-filter: brightness(92%);
-    /* -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease; */
-}
-</style>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CMapS - Notebooks / Apps</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../assets/fontawesome/css/all.css" rel="stylesheet">
 </head>
+<body>
+<div class="primary-nav">
+    <button href="#" class="hamburger open-panel nav-toggle">
+    <span class="screen-reader-text">Menu</span>
+    </button>
 
-<!-- <body>
-<div class="header" id="myHeader">
-  <center><h4 style="font-family:Trebuchet MS;;">Apologies for the current appearance and lack of functionality, the site'll be back up and running soon!</h4>
-  <center><h4 style="font-family:Trebuchet MS;;">In the meantime, please direct inquiries to: <b>smith@cmaps.co</b> or <b>smith.cmaps@gmail.com</b></h4>
-</div> -->
+    <nav role="navigation" class="menu">
 
-<div class="btn-group">
-<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='https://cullensmith.github.io'" type="button">Home</button>
-<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='https://cullensmith.github.io/map_ex'" type="button">Basic Interactive Map</button>
-<button class="button" style="font-family:Trebuchet MS;" width="33%" onclick="location.href='https://cullensmith.github.io/about'" type="button">Services and History</button>
-<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='https://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+        <a href="#" class="logotype"><img src="../images/rec_logo.png" width="130" class="center" ></a>
+
+        <div class="overflow-container">
+
+            <ul class="menu-dropdown">
+
+                <li><a href="#">HOME</a><span class="icon"><i class="fa fa-home"></i></span></li>
+
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/about">ABOUT</a><span class="icon"><i class="fa fa-user"></i></span>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/map_ex">MAPS</a><span class="icon"><i class="fa fa-image"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/notebooks">NOTEBOOKS / APPS</a><span class="icon"><i class="fa fa-code"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/script_ex">CHEATSHEETS</a><span class="icon"><i class="fa fa-list"></i></span>
+                </li>
+                <li><a href="#">CONTACT</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
 </div>
 
+<div class="new-wrapper">
 
-<div class="row">
-    <p style="font-family:Trebuchet MS;;  padding-top: 70px; padding-bottom: 10px; padding-left: 30px; padding-right: 35px;">Please click one of the large buttons below to launch a Jupyter Notebook. In order to display the interactive maps intact, I need to use Jupyter's HTML code which contains a number of overrides so rather than fighting with the formatting I've included a 'Back' button at the top of each for the time being.</p> 
+    <div id="main">
+
+        <div id="main-contents">
+
+          <center><h2>Jupyter Notebooks</h2></center>
+
+          <center><p style='color:white'>The notebooks will walk you through some Python applications from start to finish. Below those you'll find some standalone applications hosted in the cloud thanks to the Streamlit library</p></center>
+          <br>
+
+            <div class="wrap-card">
+              <!-- ::before -->
+              <div class="card">
+                <!-- ::before -->
+                <center><p>How to Scrape, Parse and Map</p></center>
+                    <a class="atag-img" style="font-family:Trebuchet MS;" href='https://cullensmith.github.io/jupyter_scrape_example'><img src='images/geopandas.png'></a>
+                <!-- ::after -->
+              </div>
+            <!-- ::after -->
+            </div>
+
+            <div class="wrap-card">
+              <!-- ::before -->
+              <div class="card">
+                <!-- ::before -->
+                <center><p>Plan a Drone Flight Path</p></center>
+                    <a class="atag-img" style="font-family:Trebuchet MS;" href="https://cullensmith.github.io/jupyter_least_cost_path"><img src='images/grass.png'></a>
+                <!-- ::after -->
+              </div>
+            <!-- ::after -->
+            </div>
+
+            
+            <center><h2>Standalone Apps</h2></center>
+
+            <center><p style='color:white'>The apps will open up in a new tab. They tend to refresh somewhat frequently so at times navigating back to this page becomes an unnecessary hassle.</p></center>
+            <br>
+            
+            <div class="wrap-card">
+              <!-- ::before -->
+              <div class="card">
+                <!-- ::before -->
+                <center><p>Hourly Forecasted Temp for the Week</p></center>
+                    <a class="atag-img" style="font-family:Trebuchet MS;" href="https://hourly-forecast.streamlit.app" target="_blank"><img src='images/streamlit_box.png'></a>
+                <!-- ::after -->
+              </div>
+            <!-- ::after -->
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
-
-
-<div class="row">
-  <div class="column">
-    <div class="btn-group-jupyter">
-      <div class="centerBlock">
-        <button class="bgj-img-size" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://cullensmith.github.io/jupyter_scrape_example'" type="button"><br>How to Scrape, Parse and Map<img src='images/geopandas.png'></button>
-      </div>
-    </div>
-    <div class="btn-group-jupyter">
-      <div class="centerBlock">
-        <!-- <button class="button" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://hourly-forecast.streamlit.app'" target="_blank" type="button">Launch a Cloud Hosted Weather Map App Utilizing Streamlit (opens new tab)</button>
-        <a class="bgj-img-size" style="font-family:Trebuchet MS;" width="40%" onclick="location.href=https://hourly-forecast.streamlit.app" target="_blank"><p>Launch a Cloud Hosted Weather Map App Utilizing Streamlit (opens new tab)</p> <img src='images/streamlit.png'></a> -->
-        <a class="atag-img" style="font-family:Trebuchet MS;" href="https://hourly-forecast.streamlit.app" target="_blank"><img src='images/streamlit_box.png'></a>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="btn-group-jupyter">
-      <div class="centerBlock">
-        <button class="bgj-img-size" style="font-family:Trebuchet MS;" width="40%" onclick="location.href='https://cullensmith.github.io/jupyter_least_cost_path'" type="button"><br>Least Cost Path to Plan a Drone Flight Avoiding Obstacles<img src='images/grass.png'></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
-    window.onscroll = function() {myFunction()};
-    
-    var header = document.getElementById("myHeader");
-    var sticky = header.offsetTop;
-    
-    function myFunction() {
-      if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
-      } else {
-        header.classList.remove("sticky");
-      }
-    }
-</script>
-
+<script src="../js/slide.js"></script>
 </body>
 </html>
-    

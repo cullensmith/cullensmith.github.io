@@ -1,125 +1,86 @@
 <!DOCTYPE html>
-<html>
-
-<head><title>Services and Brief History</title><link rel="shortcut icon" href="https://cullensmith.github.io/images/square_c.png">
-
-
-<style>
-.btn-group .button {
-  background-color: #6fcc52; /* Green */
-  border: 1px solid green;
-  color: #2e692f;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  width: 25%;
-  float: left; /* Float the buttons side by side */
-}
-
-.btn-group .button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-.btn-group .button:hover {
-  color: white;
-  background-color: #3e8e41;
-}
-/* Style the header */
-.header {
-  padding: 3px 3px;
-  background: #555;
-  color: #f1f1f1;
-}
-
-/* Page content */
-.content {
-  color: white;
-  padding: 16px;
-}
-
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 102px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.column {
-  padding-top: 8px;
-  float: left;
-  width: 50%;
-
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-</style>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CMapS - Notebooks / Apps</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="../assets/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
-<div class="btn-group">
-<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='https://cullensmith.github.io'" type="button">Home</button>
-<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='https://cullensmith.github.io/map_ex'" type="button">Basic Interactive Map</button>
-<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/notebooks'" type="button">Jupyter Notebooks</button>
-<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='https://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+<div class="primary-nav">
+    <button href="#" class="hamburger open-panel nav-toggle">
+    <span class="screen-reader-text">Menu</span>
+    </button>
+
+    <nav role="navigation" class="menu">
+
+        <a href="#" class="logotype"><img src="../images/rec_logo.png" width="130" class="center" ></a>
+
+        <div class="overflow-container">
+
+            <ul class="menu-dropdown">
+
+                <li><a href="#">HOME</a><span class="icon"><i class="fa fa-home"></i></span></li>
+
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/about">ABOUT</a><span class="icon"><i class="fa fa-user"></i></span>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/map_ex">MAPS</a><span class="icon"><i class="fa fa-image"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/notebooks">NOTEBOOKS / APPS</a><span class="icon"><i class="fa fa-code"></i></span>
+                </li>
+                <li class="menu-dropdown">
+                    <a href="https://cullensmith.github.io/script_ex">CHEATSHEETS</a><span class="icon"><i class="fa fa-list"></i></span>
+                </li>
+                <li><a href="#">CONTACT</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
 </div>
 
-<div class="row">
-    <p style="font-family:Trebuchet MS;;  padding-top: 70px; padding-bottom: 10px; padding-left: 30px; padding-right: 35px;">Since 2007 I've been in the GIS field professionally and for the past nine plus years I have been working as a remote GIS Consultant supporting an array of clientele. Having gained exposure to GIS while at Penn State University and interning with the National Park Service, I landed a typical entry level GIS role with an environmental evaluation company. I earned the opportunity to fill their GIS Specialist position when it became vacant, having demonstrated my capabilities, where I supported the company's Aerial Imagery, Fire Insurance, Geocoding and Topo Departments. In 2013 they were acquired by a large corporation setting up the perfect opportunity to branch out on my own where I'd be able to consult both on-site as well as remotely.</p> 
-</div>
-    <p style="font-family:Trebuchet MS;;  padding-bottom: 20px; padding-left: 30px;padding-right:20px;">Which brings us to today where I continue serving as a seamless extension to GIS departments needing just that extra little bit of help and/or guidance. At this point in my career there isn't much that I can't problem solve or reverse engineer and the people I've worked with are at ease tossing wide ranging inquiries my direction. I'm equally adept dealing with raster, vector, mesh and point cloud input of all magnitudes that's either been provided or that I've had to resource myself. Sometimes that means scraping and batch processing hundreds of image tiles using a customized script, retrieving and reformatting geojson data from an API for other analysts to use or grabbing elements from an interactive map retaining pertinent attributes. I would love to have a hand in helping your vision fulfill its potential. Feel free to reach out if you need:</p>
-    <ulstyle="font-family:Trebuchet MS;;  padding-bottom: 20px; padding-left: 30px;padding-right:20px;">
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Data Engineering</b> - You've colleced a variety of data from multiple sources, need an assist getting them to play nicely with each other?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Route Optimization</b> - Have a set of customers you need to reach regularly and would like to optimally schedule based on location?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Site Selection</b> - Do you have a set of criteria that you'd like to use to select a new location?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Viewshed Analysis/Line of Sight</b> - Are you deciding where to place an antenna and need help visualizing its reach?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Asset Management</b> - Do you have a space with a large footprint and you need to keep track of where elements are arranged?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Data Acquisition</b> - Need help tracking down information?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Image Classification</b> - Are you flying a drone and have a raster (image) that needs to be evaluated?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;"><b>Process Automation</b> - Tired of wasting energy on tedious tasks?</li>
-        <li style="font-family:Trebuchet MS;;padding-left: 60px;padding-right:20px;padding-bottom:30px;"><b>Custom Maps</b> - Is there a special event or location you need would love to see memorialized?</li>
-    </ul> 
+<div class="new-wrapper">
+
+    <div id="main">
+
+        <div id="main-contents">
+
+        <div class="row">
+            <p style="color:white; font-family:Trebuchet MS;  padding-top: 70px; padding-bottom: 10px; padding-left: 30px; padding-right: 35px;">Since 2007 I've been in the GIS field professionally and for the past nine plus years I have been working as a remote GIS Consultant supporting an array of clientele. Having gained exposure to GIS while at Penn State University and interning with the National Park Service, I landed a typical entry level GIS role with an environmental evaluation company. I earned the opportunity to fill their GIS Specialist position when it became vacant, having demonstrated my capabilities, where I supported the company's Aerial Imagery, Fire Insurance, Geocoding and Topo Departments. In 2013 they were acquired by a large corporation setting up the perfect opportunity to branch out on my own where I'd be able to consult both on-site as well as remotely.</p> 
+        </div>
+            <p style="color:white; font-family:Trebuchet MS;  padding-bottom: 20px; padding-left: 30px;padding-right:20px;">Which brings us to today where I continue serving as a seamless extension to GIS departments needing just that extra little bit of help and/or guidance. At this point in my career there isn't much that I can't problem solve or reverse engineer and the people I've worked with are at ease tossing wide ranging inquiries my direction. I'm equally adept dealing with raster, vector, mesh and point cloud input of all magnitudes that's either been provided or that I've had to resource myself. Sometimes that means scraping and batch processing hundreds of image tiles using a customized script, retrieving and reformatting geojson data from an API for other analysts to use or grabbing elements from an interactive map retaining pertinent attributes. I would love to have a hand in helping your vision fulfill its potential. Feel free to reach out if you need:</p>
+            <ulstyle="font-family:Trebuchet MS;  padding-bottom: 20px; padding-left: 30px;padding-right:20px;">
+                <li style="color:rgb(0, 0, 0); font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Data Engineering</u></font></b><font color="white"> - You've colleced a variety of data from multiple sources, need an assist getting them to play nicely with each other?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Route Optimization</u></font></b><font color="white"> - Have a set of customers you need to reach regularly and would like to optimally schedule based on location?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Site Selection</u></font></b><font color="white"> - Do you have a set of criteria that you'd like to use to select a new location?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Viewshed Analysis/Line of Sight</u></font></b><font color="white"> - Are you deciding where to place an antenna and need help visualizing its reach?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Asset Management</u></font></b><font color="white"> - Do you have a space with a large footprint and you need to keep track of where elements are arranged?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Data Acquisition</u></font></b><font color="white"> - Need help tracking down information?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Image Classification</u></font></b><font color="white"> - Are you flying a drone and have a raster (image) that needs to be evaluated?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;"><b><font color="black"><u>Process Automation</u></font></b><font color="white"> - Tired of wasting energy on tedious tasks?</font></li>
+                <li style="color:black; font-family:Trebuchet MS;padding-left: 60px;padding-right:20px;padding-bottom:30px;"><b><font color="black"><u>Custom Maps</u></font></b><font color="white"> - Is there a special event or location you need would love to see memorialized?</font></li>
+            </ul> 
+        
+        </div>
+        
+        
+        <!-- <div class="row">
+        
+            <center><img src="thesix.png" alt="Programs" style="width:30%"></center>
+        
+        </div> -->
+
+        </div>
+
+    </div>
 
 </div>
-
-
-<div class="row">
-
-    <center><img src="thesix.png" alt="Programs" style="width:30%"></center>
-
-</div>
-
-<script>
-window.onscroll = function() {myFunction()};
-
-var header = document.getElementById("myHeader");
-var sticky = header.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-}
-</script>
-
+<script src="../js/slide.js"></script>
 </body>
 </html>
