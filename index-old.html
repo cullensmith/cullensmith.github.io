@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head><title>CMapS</title></title><link rel="shortcut icon" href="https://cullensmith.github.io/images/square_c.png">
+
+<style>
+
+
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 99%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group .button {
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: #2e692f;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 25%;
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+
+
+/* Modal - background  */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/*Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 85%;
+}
+
+/* Caption of Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+img{
+        /* cursor: pointer; */
+}
+
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="header" id="myHeader">
+    <center><h4 style="font-family:Trebuchet MS;">Apologies for the current appearance and any lack of functionality, the main site'll be back up and running soon!</h4>
+    <center><h4 style="font-family:Trebuchet MS;">In the meantime, please direct inquiries to: <b>smith.cmaps@gmail.com</b> or <b>smith@cmaps.co</b></h4>
+</div>
+
+<div class="btn-group">
+<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/map_ex'" type="button">Basic Interactive Map</button>
+<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/about'" type="button">Services and History</button>
+<button class="button" style="font-family:Trebuchet MS;" width="24%" onclick="location.href='http://cullensmith.github.io/notebooks'" type="button">Jupyter Notebooks</button>
+<button class="button" style="font-family:Trebuchet MS;" width="25%" onclick="location.href='http://cullensmith.github.io/script_ex'" type="button">Python/PostgreSQL-PostGIS</button>
+</div>
+
+<div>
+<center><img src="images/rec_logo.png" width="400" height="310" class="center" style="padding-top:65px;padding-bottom:65px">
+</div>
+
+
+
+<div class="row">
+  <div class="column">
+    <img src="images/glossy_square.png" title='Blender Rendering of Glacier National Park' alt="Glacier National Park Shaded Relief" style="width:99%" id="image_1_1">
+    <img src="images/spatial.png" title='Generic ArcGIS Screenshot' alt="Screenshot of Basic ArcGIS Analysis" style="width:99%" id="image_1_2">
+    <img src="images/campus_map.png" title='Campus Map' alt="Campus Map" style="width:99%" id="image_1_3">
+    <img src="images/addresses.png" title="Addresses to Target Based on Socioeconomic Criteria" alt="Addresses to Target Based on Socioeconomic Criteria" style="width:99%"  id="image_1_8">
+    <img src="images/contours.png" title='Contour Map of Lot with Backyard Flooding' alt="Countour Map of Around a House" style="width:99%"  id="image_1_4">
+    <img src="images/austria.png" title='Highlightig Municipalities of Interest in Austria' alt="Target Municipalities" style="width:99%" id="image_1_7">
+    <img src="images/tarray.png" title= 'Renewable Energy Project Layout' alt="Solar Array Layout" style="width:99%" id="image_1_6">
+  </div>
+  <div class="column">
+    <img src="images/dual_los.png" title='Line of Sight Analysis - Rooftops Visible from Center Structure' alt="Line of Sight Analysis" style="width:99%" id="image_2_1">
+    <img src="images/glossy_topo_small.png" title='Old Topo Rendered with Shaded Relief' alt="Old Topo with Additional Shaded Relief" style="width:99%" id="image_2_2">
+    <img src="images/whiteloop6.png" title='Hiking Trail with Elevation Profile' alt="Hiking Trail Profile" style="width:99%" id="image_2_3">
+    <img src="images/output.png" title='Simplified Site Selection' alt="Walking Time" style="width:99%" id="image_2_8">
+    <img src="images/walking.png" title='Walking Time Visual' alt="Walking Time" style="width:99%" id="image_2_6">
+    <img src="images/heat.png" title='Generic Heat Map Output' alt="Simple Heat Map" style="width:99%" id="image_2_4">
+    <img src="images/phillyacc.png" title='Accident Freqency in Downtown Philly' alt="Philly Accidents" style="width:99%" id="image_2_7">
+    <img src="images/sc_static2.png" alt="Apartment Locations" style="width:99%" id="image_2_5">
+  </div>
+  <div class="column">
+    <img src="images/neon_plus.png" title='Blender Rendering of a Neon Light atop Boston Building Layer' alt="Decorative Boston Building Map" style="width:99%"  id="image_3_1">
+    <img src="images/bivariateMap.png" title='Generalized Bivariate Map' alt="Bivariate Map" style="width:99%"  id="image_3_2">
+    <img src="images/adirondacks_thin_red_square_v2.png" title='Adirondack Mtns Point Elevation Profile Casting Shadows' alt="Adirondack State Park Columns" style="width:99%"  id="image_3_7">
+    <img src="images/priv_topo.png" title="Topo Derived from Survey of Private Property" alt="Topo from Survey of Private Residence" style="width:99%"  id="image_3_3">
+    <img src="images/square_gray_bluefill_v2.png" title='Lake Wallenpaupack Footprint' alt="Lake Wallenpaupack" style="width:99%"  id="image_3_4">
+    <img src="images/pgrouting.png" title='Snippit of Dijkstra Algorithm from PostgreSQL and PGRouting' alt="Shortest Route Snippit" style="width:99%"  id="image_3_8">
+    <img src="images/digitized.png" title='Simple Digitizing Example of Old Hardcopy Map' alt="Simple Digitizing" style="width:99%"  id="image_3_5">
+  </div>
+</div> 
+
+
+<!-- <div id="modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div> -->
+
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+// Get the modal
+var modal = document.getElementById("modal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("image_3_1");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+
+
+</script>
+
+</body>
+</html>
