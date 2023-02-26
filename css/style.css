@@ -288,6 +288,13 @@ input#menu[type="checkbox"] {
 }
 
 
+.column {
+  float: left;
+  width: 30%;
+  margin-top:20px;
+  /* margin: 20px; */
+}
+
 .btn-group-jupyter .button:hover {
   border-radius: 10px;
   color:#21759b;
