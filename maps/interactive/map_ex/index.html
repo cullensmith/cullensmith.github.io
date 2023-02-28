@@ -147,7 +147,7 @@
 
     <div class="column-left">
         <div id="sliding-pane">
-            <div ><p style="font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve.</p>
+            <div ><p style="font-size: 16px;font-family:Trebuchet MS; padding: 15px;">Coastal water levels are expected to rise in the 2030's and these are the predicted levels by Climate Ready Boston. While they're better suited to estimate sea level rise, I was able to verify the impact on local infrastructure using LiDAR data gathered by the USGS following 2013's Hurricane Sandy. LiDAR data was a better fit in this scenario compared to a DEM as it will allow for a wider variety of analysis. Since DEMs are created to remove manmade elements you're going to see exaggerated worst case scenarios where as LiDAR will allow you to account for elevated roads and bridges. Ths map will continue to evolve.</p>
             </div>
         </div>
 
@@ -222,27 +222,27 @@
       attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
     });
 
-    var states = new L.GeoJSON.AJAX("leaflet/src/data/states4326.geojson");
+    // var states = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/states4326.geojson");
 
-    var bfoots = new L.GeoJSON.AJAX( "leaflet/src/data/buildings_smallb.geojson",{color:'black', weight:0.5, onEachFeature: function(feature,bfoots)
+    var bfoots = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/buildings_smallb.geojson",{color:'black', weight:0.5, onEachFeature: function(feature,bfoots)
             {
                 bfoots.bindPopup("Parcel ID: "+feature.properties.PARCEL_ID+"<br>Building Height: "+feature.properties.TOP_GROUND+"</br>");
             }
         }).addTo(map);
 
-    var cnts = new L.GeoJSON.AJAX("leaflet/src/data/bcents2.geojson");
-    var cnts2 = new L.GeoJSON.AJAX("leaflet/src/data/bcentroids.geojson");
+    // var cnts = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/bcents2.geojson");
+    // var cnts2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/bcentroids.geojson");
 
-
-    var ssurge4 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge4.geojson");
-    var ssurge3 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge3.geojson");
-    var ssurge2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge2.geojson");
-    var ssurge1 = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/surge1.geojson").addTo(map);
-    var pois = new L.GeoJSON.AJAX("https://cullensmith.github.io/map_ex/leaflet/src/data/pois.geojson");
+                                              cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/
+    var ssurge4 = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/surge4.geojson");
+    var ssurge3 = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/surge3.geojson");
+    var ssurge2 = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/surge2.geojson");
+    var ssurge1 = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/surge1.geojson").addTo(map);
+    // // var pois = new L.GeoJSON.AJAX("https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/pois.geojson");
 
 	//fetching data dynamically
 	var fetchedgeojson = false;
-	fetch('https://cullensmith.github.io/map_ex/leaflet/src/data/pois.geojson',{
+	fetch('https://cullensmith.github.io/maps/interactive/map_ex/leaflet/src/data/pois.geojson',{
 		method: 'GET'
 	})
 	.then(response => response.json())
