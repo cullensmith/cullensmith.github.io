@@ -3,7 +3,12 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>gif_map_delayedflights</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Make a Time Series GIF</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+
+
+
+
+
 
 
 <div class="btn-group">
@@ -14,8 +19,77 @@
   <button class="button" style="font-family:Trebuchet MS;" width="100%" onclick="location.href='http://cullensmith.github.io/notebooks'" type="button">Back</button>
 </div>
 
-
 <style type="text/css">
+
+
+
+/* Style the header */
+.header {
+  padding: 3px 3px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 99%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group .button {
+  margin-bottom: 20px;
+  background-color: #6fcc52; /* Green */
+  border: 1px solid green;
+  color: #2e692f;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 23%;
+  /* float: left; Float the buttons side by side */
+}
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  color: white;
+  background-color: #3e8e41;
+}
+
+
+
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -14609,7 +14683,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gif_output</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;delayedflights.gif&#39;</span><span class="p">)</span>
@@ -14631,7 +14705,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
@@ -14650,12 +14724,12 @@ class="
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14680,6 +14754,30 @@ class="
 </div>
 </div>
 
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>C:\Users\Cullen\anaconda3\envs\geo_env\lib\site-packages\geopandas\_compat.py:111: UserWarning: The Shapely GEOS version (3.10.2-CAPI-1.16.0) is incompatible with the GEOS version PyGEOS was compiled with (3.10.4-CAPI-1.16.2). Conversions between both will be slow.
+  warnings.warn(
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14700,7 +14798,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fileloc_airports</span> <span class="o">=</span> <span class="s1">&#39;data/T_MASTER_CORD_20230227_103143.zip&#39;</span>
@@ -14738,7 +14836,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">DOWNLOADPATH</span> <span class="o">=</span> <span class="s1">&#39;e:/downloads&#39;</span>
@@ -14787,7 +14885,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here&#39;s where we use the download order key from earlier. since each download was associated</span>
@@ -14809,7 +14907,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># join the flight dataframe with the airline codes/carrier name using a left join to retain all the flights</span>
@@ -14832,7 +14930,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># grab the coordinates for the origin airports for each flight. drop the pivot field so there isn&#39;t a duplicate</span>
@@ -14854,7 +14952,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># rename the columns</span>
@@ -14875,7 +14973,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="p">[</span><span class="s1">&#39;dst_lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">airports</span><span class="p">[</span><span class="n">airports</span><span class="p">[</span><span class="s1">&#39;AIRPORT&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;BOS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;LATITUDE&#39;</span><span class="p">]</span>
@@ -14892,7 +14990,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in order to use multiple columns as entities to create input for our paths column utilize apply a lambda function</span>
@@ -14911,7 +15009,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="p">[</span><span class="s1">&#39;arrivaldate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">flights</span><span class="p">[</span><span class="s1">&#39;Date (MM/DD/YYYY)&#39;</span><span class="p">])</span>
@@ -14928,7 +15026,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># turn the dataframe into a geodataframe using the f-string from earlier as the wkt geometry</span>
@@ -14952,12 +15050,12 @@ class="
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># storing the proj4 string to match up crs with the ccrs package</span>
@@ -15003,7 +15101,7 @@ class="
 <span class="c1">#     export those png files</span>
     <span class="n">mapfig</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span>
     <span class="n">mapfig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fileout</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="c1">#     print(f&#39;finished: Morning {filteredflights[filteredflights.arrivaldate.dt.day==numdate][&quot;arrivaldate&quot;].dt.day_name().iloc[0]}, Oct {numdate})&#39;)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;finished: Morning </span><span class="si">{</span><span class="n">filteredflights</span><span class="p">[</span><span class="n">filteredflights</span><span class="o">.</span><span class="n">arrivaldate</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="o">==</span><span class="n">numdate</span><span class="p">][</span><span class="s2">&quot;arrivaldate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, Oct </span><span class="si">{</span><span class="n">numdate</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
     <span class="n">mapfig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 <span class="c1">#     plt.show(map)</span>
@@ -15043,7 +15141,7 @@ class="
     
     <span class="n">mapfig</span> <span class="o">=</span> <span class="nb">map</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span>
     <span class="n">mapfig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">fileout</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="c1">#     print(f&#39;finished: Afternoon {filteredflights[filteredflights.arrivaldate.dt.day==numdate][&quot;arrivaldate&quot;].dt.day_name().iloc[0]}, Oct {numdate})&#39;)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;finished: Afternoon </span><span class="si">{</span><span class="n">filteredflights</span><span class="p">[</span><span class="n">filteredflights</span><span class="o">.</span><span class="n">arrivaldate</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span><span class="o">==</span><span class="n">numdate</span><span class="p">][</span><span class="s2">&quot;arrivaldate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, Oct </span><span class="si">{</span><span class="n">numdate</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
     <span class="n">mapfig</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 <span class="c1">#     gc.collect()</span>
@@ -15052,6 +15150,168 @@ class="
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>finished: Morning Saturday, Oct 1)
+finished: Afternoon Saturday, Oct 1)
+finished: Morning Sunday, Oct 2)
+finished: Afternoon Sunday, Oct 2)
+finished: Morning Monday, Oct 3)
+finished: Afternoon Monday, Oct 3)
+finished: Morning Tuesday, Oct 4)
+finished: Afternoon Tuesday, Oct 4)
+finished: Morning Wednesday, Oct 5)
+finished: Afternoon Wednesday, Oct 5)
+finished: Morning Thursday, Oct 6)
+finished: Afternoon Thursday, Oct 6)
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>                         Traceback (most recent call last)
+Input <span class="ansi-green-intense-fg ansi-bold">In [12]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 9&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">     27</span>     <span style="color: rgb(0,135,0)">map</span> <span style="color: rgb(98,98,98)">=</span> lower48<span style="color: rgb(98,98,98)">.</span>to_crs(thecrs)<span style="color: rgb(98,98,98)">.</span>plot(ax<span style="color: rgb(98,98,98)">=</span>ax, color<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">none</span><span style="color: rgb(175,0,0)">&#39;</span>, edgecolor<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">white</span><span style="color: rgb(175,0,0)">&#39;</span>, linewidth<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0.4</span>)
+<span class="ansi-green-fg">     28</span>     <span style="color: rgb(0,135,0)">map</span> <span style="color: rgb(98,98,98)">=</span> states[<span style="color: rgb(98,98,98)">~</span>states<span style="color: rgb(98,98,98)">.</span>NAME<span style="color: rgb(98,98,98)">.</span>isin([<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Alaska</span><span style="color: rgb(175,0,0)">&#39;</span>,<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Hawaii</span><span style="color: rgb(175,0,0)">&#39;</span>])]<span style="color: rgb(98,98,98)">.</span>to_crs(thecrs)<span style="color: rgb(98,98,98)">.</span>plot(ax<span style="color: rgb(98,98,98)">=</span>ax, color<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">none</span><span style="color: rgb(175,0,0)">&#39;</span>, edgecolor<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">white</span><span style="color: rgb(175,0,0)">&#39;</span>, alpha<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0.1</span>)
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 29</span>     <span style="color: rgb(0,135,0)">map</span> <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">filteredflights</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">flightpaths</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Arrival Delay (Minutes)</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">&lt;</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">30</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">ax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">ax</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">transform</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">ccrs</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">Geodetic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">color</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">cyan</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">linewidth</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.4</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">0.3</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">zorder</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">5</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">     30</span>     <span style="color: rgb(0,135,0)">map</span> <span style="color: rgb(98,98,98)">=</span> filteredflights[(flightpaths[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Arrival Delay (Minutes)</span><span style="color: rgb(175,0,0)">&#39;</span>]<span style="color: rgb(98,98,98)">&gt;</span> <span style="color: rgb(98,98,98)">30</span>)]<span style="color: rgb(98,98,98)">.</span>plot(ax<span style="color: rgb(98,98,98)">=</span>ax, transform<span style="color: rgb(98,98,98)">=</span>ccrs<span style="color: rgb(98,98,98)">.</span>Geodetic(), color<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">red</span><span style="color: rgb(175,0,0)">&#39;</span>, linewidth<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0.4</span>, alpha<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">.7</span>, zorder<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">5000</span>)
+<span class="ansi-green-fg">     33</span> <span style="color: rgb(95,135,135)">#     plt.setp(ax.spines.values(), color=&#39;black&#39;)</span>
+<span class="ansi-green-fg">     34</span> <span style="color: rgb(95,135,135)">#     plt.setp([ax.get_xticklines(), ax.get_yticklines()], color=&#39;black&#39;)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\plotting.py:950</span>, in <span class="ansi-cyan-fg">GeoplotAccessor.__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, *args, **kwargs)</span>
+<span class="ansi-green-fg">    948</span> kind <span style="color: rgb(98,98,98)">=</span> kwargs<span style="color: rgb(98,98,98)">.</span>pop(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">kind</span><span style="color: rgb(175,0,0)">&#34;</span>, <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">geo</span><span style="color: rgb(175,0,0)">&#34;</span>)
+<span class="ansi-green-fg">    949</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> kind <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">geo</span><span style="color: rgb(175,0,0)">&#34;</span>:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 950</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> plot_dataframe(data, <span style="color: rgb(98,98,98)">*</span>args, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg">    951</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> kind <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_pandas_kinds:
+<span class="ansi-green-fg">    952</span>     <span style="color: rgb(95,135,135)"># Access pandas plots</span>
+<span class="ansi-green-fg">    953</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> PlotAccessor(data)(kind<span style="color: rgb(98,98,98)">=</span>kind, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\plotting.py:692</span>, in <span class="ansi-cyan-fg">plot_dataframe</span><span class="ansi-blue-intense-fg ansi-bold">(df, column, cmap, color, ax, cax, categorical, legend, scheme, k, vmin, vmax, markersize, figsize, legend_kwds, categories, classification_kwds, missing_kwds, aspect, **style_kwds)</span>
+<span class="ansi-green-fg">    689</span>     markersize <span style="color: rgb(98,98,98)">=</span> df[markersize]<span style="color: rgb(98,98,98)">.</span>values
+<span class="ansi-green-fg">    691</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> column <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 692</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> plot_series(
+<span class="ansi-green-fg">    693</span>         df<span style="color: rgb(98,98,98)">.</span>geometry,
+<span class="ansi-green-fg">    694</span>         cmap<span style="color: rgb(98,98,98)">=</span>cmap,
+<span class="ansi-green-fg">    695</span>         color<span style="color: rgb(98,98,98)">=</span>color,
+<span class="ansi-green-fg">    696</span>         ax<span style="color: rgb(98,98,98)">=</span>ax,
+<span class="ansi-green-fg">    697</span>         figsize<span style="color: rgb(98,98,98)">=</span>figsize,
+<span class="ansi-green-fg">    698</span>         markersize<span style="color: rgb(98,98,98)">=</span>markersize,
+<span class="ansi-green-fg">    699</span>         aspect<span style="color: rgb(98,98,98)">=</span>aspect,
+<span class="ansi-green-fg">    700</span>         <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>style_kwds,
+<span class="ansi-green-fg">    701</span>     )
+<span class="ansi-green-fg">    703</span> <span style="color: rgb(95,135,135)"># To accept pd.Series and np.arrays as column</span>
+<span class="ansi-green-fg">    704</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(column, (np<span style="color: rgb(98,98,98)">.</span>ndarray, pd<span style="color: rgb(98,98,98)">.</span>Series)):
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\plotting.py:458</span>, in <span class="ansi-cyan-fg">plot_series</span><span class="ansi-blue-intense-fg ansi-bold">(s, cmap, color, ax, figsize, aspect, **style_kwds)</span>
+<span class="ansi-green-fg">    456</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> lines<span style="color: rgb(98,98,98)">.</span>empty:
+<span class="ansi-green-fg">    457</span>     values_ <span style="color: rgb(98,98,98)">=</span> values[line_idx] <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> cmap <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 458</span>     _plot_linestring_collection(
+<span class="ansi-green-fg">    459</span>         ax, lines, values_, color<span style="color: rgb(98,98,98)">=</span>color, cmap<span style="color: rgb(98,98,98)">=</span>cmap, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>style_kwds
+<span class="ansi-green-fg">    460</span>     )
+<span class="ansi-green-fg">    462</span> <span style="color: rgb(95,135,135)"># plot all Points in the same collection</span>
+<span class="ansi-green-fg">    463</span> points <span style="color: rgb(98,98,98)">=</span> expl_series[point_idx]
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\plotting.py:233</span>, in <span class="ansi-cyan-fg">_plot_linestring_collection</span><span class="ansi-blue-intense-fg ansi-bold">(ax, geoms, values, color, cmap, vmin, vmax, **kwargs)</span>
+<span class="ansi-green-fg">    229</span>     kwargs[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">color</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> color
+<span class="ansi-green-fg">    231</span> _expand_kwargs(kwargs, multiindex)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 233</span> segments <span style="color: rgb(98,98,98)">=</span> [np<span style="color: rgb(98,98,98)">.</span>array(linestring<span style="color: rgb(98,98,98)">.</span>coords)[:, :<span style="color: rgb(98,98,98)">2</span>] <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> linestring <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> geoms]
+<span class="ansi-green-fg">    234</span> collection <span style="color: rgb(98,98,98)">=</span> LineCollection(segments, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg">    236</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> values <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\plotting.py:233</span>, in <span class="ansi-cyan-fg">&lt;listcomp&gt;</span><span class="ansi-blue-intense-fg ansi-bold">(.0)</span>
+<span class="ansi-green-fg">    229</span>     kwargs[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">color</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> color
+<span class="ansi-green-fg">    231</span> _expand_kwargs(kwargs, multiindex)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 233</span> segments <span style="color: rgb(98,98,98)">=</span> [np<span style="color: rgb(98,98,98)">.</span>array(linestring<span style="color: rgb(98,98,98)">.</span>coords)[:, :<span style="color: rgb(98,98,98)">2</span>] <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> linestring <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> geoms]
+<span class="ansi-green-fg">    234</span> collection <span style="color: rgb(98,98,98)">=</span> LineCollection(segments, <span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg">    236</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> values <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\pandas\core\arrays\base.py:417</span>, in <span class="ansi-cyan-fg">ExtensionArray.__iter__</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
+<span class="ansi-green-fg">    413</span> <span style="color: rgb(95,135,135)"># This needs to be implemented so that pandas recognizes extension</span>
+<span class="ansi-green-fg">    414</span> <span style="color: rgb(95,135,135)"># arrays as list-like. The default implementation makes successive</span>
+<span class="ansi-green-fg">    415</span> <span style="color: rgb(95,135,135)"># calls to ``__getitem__``, which may be slower than necessary.</span>
+<span class="ansi-green-fg">    416</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> i <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">range</span>(<span style="color: rgb(0,135,0)">len</span>(<span style="color: rgb(0,135,0)">self</span>)):
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 417</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">yield</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">i</span><span class="ansi-yellow-bg">]</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\array.py:360</span>, in <span class="ansi-cyan-fg">GeometryArray.__getitem__</span><span class="ansi-blue-intense-fg ansi-bold">(self, idx)</span>
+<span class="ansi-green-fg">    358</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">__getitem__</span>(<span style="color: rgb(0,135,0)">self</span>, idx):
+<span class="ansi-green-fg">    359</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(idx, numbers<span style="color: rgb(98,98,98)">.</span>Integral):
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 360</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">_geom_to_shapely</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">idx</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    361</span>     <span style="color: rgb(95,135,135)"># array-like, slice</span>
+<span class="ansi-green-fg">    362</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> compat<span style="color: rgb(98,98,98)">.</span>PANDAS_GE_10:
+<span class="ansi-green-fg">    363</span>         <span style="color: rgb(95,135,135)"># for pandas &gt;= 1.0, validate and convert IntegerArray/BooleanArray</span>
+<span class="ansi-green-fg">    364</span>         <span style="color: rgb(95,135,135)"># to numpy array, pass-through non-array-like indexers</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\array.py:115</span>, in <span class="ansi-cyan-fg">_geom_to_shapely</span><span class="ansi-blue-intense-fg ansi-bold">(geom)</span>
+<span class="ansi-green-fg">    113</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> geom
+<span class="ansi-green-fg">    114</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 115</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">vectorized</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_pygeos_to_shapely</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">geom</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\geopandas\_vectorized.py:78</span>, in <span class="ansi-cyan-fg">_pygeos_to_shapely</span><span class="ansi-blue-intense-fg ansi-bold">(geom)</span>
+<span class="ansi-green-fg">     76</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> shapely<span style="color: rgb(98,98,98)">.</span>wkt<span style="color: rgb(98,98,98)">.</span>loads(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">POINT EMPTY</span><span style="color: rgb(175,0,0)">&#34;</span>)
+<span class="ansi-green-fg">     77</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 78</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">shapely</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">wkb</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">loads</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pygeos</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">to_wkb</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">geom</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\shapely\wkb.py:23</span>, in <span class="ansi-cyan-fg">loads</span><span class="ansi-blue-intense-fg ansi-bold">(data, hex)</span>
+<span class="ansi-green-fg">     21</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> reader<span style="color: rgb(98,98,98)">.</span>read_hex(data)
+<span class="ansi-green-fg">     22</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 23</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">reader</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">read</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\anaconda3\envs\geo_env\lib\site-packages\shapely\geos.py:426</span>, in <span class="ansi-cyan-fg">WKBReader.read</span><span class="ansi-blue-intense-fg ansi-bold">(self, data)</span>
+<span class="ansi-green-fg">    424</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">read</span>(<span style="color: rgb(0,135,0)">self</span>, data):
+<span class="ansi-green-fg">    425</span>     <span style="color: rgb(175,0,0)">&#34;&#34;&#34;Returns geometry from WKB&#34;&#34;&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 426</span>     geom <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_lgeos</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">GEOSWKBReader_read</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    427</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_reader</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">c_char_p</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">c_size_t</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">len</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    428</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> geom:
+<span class="ansi-green-fg">    429</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> WKBReadingError(
+<span class="ansi-green-fg">    430</span>             <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Could not create geometry because of errors </span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-fg">    431</span>             <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">while reading input.</span><span style="color: rgb(175,0,0)">&#34;</span>)
+
+<span class="ansi-red-intense-fg ansi-bold">KeyboardInterrupt</span>: </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+class="
+"
+>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -15071,7 +15331,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
