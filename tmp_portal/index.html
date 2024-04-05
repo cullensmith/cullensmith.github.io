@@ -33,20 +33,33 @@
 </head>
 <body>
 
-<h2>CSV to Table with Filters and Map</h2>
+<h2>Demo Version of FracTracker Data Portal</h2>
 
 <div id="map"></div>
 
 <div id="resultCount"></div> <!-- Placeholder for result count -->
 
 <form id="csvForm">
-  <label for="stateFilter">Filter by State (STUSPS):</label>
+  <p>Use the dropdowns below to select your filters</p>
+  <label for="stateFilter">Filter by State:</label>
   <select id="stateFilter">
     <option value="">All</option>
     <option value="PA">PA</option>
-    <option value="OH">OH</option>
     <option value="WV">WV</option>
   </select>
+  <p></p>
+  <label for="categoryFilter">Filter by FracTracker Category:</label>
+  <select id="categoryFilter">
+    <option value="">All</option>
+    <option value="Production Well">Production Well</option>
+    <option value="Injection / Storage / Service">Injection / Storage / Service</option>
+    <option value="Orphaned / Abandoned / Unverified Plug">Orphaned / Abandoned / Unverified Plug</option>
+    <option value="Other / Unknown">Other / Unknown</option>
+    <option value="Not Drilled">Not Drilled</option>
+    <option value="Plugged">Plugged</option>
+    <!-- Add options for categories here -->
+  </select><p></p>
+  
   <input type="submit" value="Apply Filter">
   <button type="button" id="resetButton">Reset</button>
   <button type="button" id="downloadButton">Download CSV</button>
@@ -84,6 +97,7 @@ document.getElementById('csvForm').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form submission
 
   const stateFilter = document.getElementById('stateFilter').value.toUpperCase();
+  const categoryFilter = document.getElementById('categoryFilter').value; // Get category filter value
 
   fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/data.csv')
     .then(response => response.json())
@@ -91,14 +105,15 @@ document.getElementById('csvForm').addEventListener('submit', function(event) {
       const csvContent = atob(data.content); // Decode content from base64
       const rows = csvContent.trim().split('\n').map(row => row.split(','));
       const filteredRows = rows.filter(row => {
-        const stusps = row[2].toUpperCase(); // Assuming the STUSPS column is at index 2
-        return !stateFilter || stusps === stateFilter;
+        const stusps = row[4].toUpperCase(); // Assuming the STUSPS column is at index 4
+        const ftCategory = row[14]; // Assuming the ft_category column is at index 5
+        return (!stateFilter || stusps === stateFilter) && (!categoryFilter || ftCategory === categoryFilter);
       });
 
       const locations = filteredRows.map(row => ({
-        name: row[1], // Assuming the location name is at index 1
-        latitude: parseFloat(row[3]), // Assuming the latitude is at index 3
-        longitude: parseFloat(row[4]) // Assuming the longitude is at index 4
+        name: row[0], // Assuming the location name is at index 0
+        latitude: parseFloat(row[2].replace(/['"]+/g, '')), // Assuming the latitude is at index 2
+        longitude: parseFloat(row[3].replace(/['"]+/g, '')) // Assuming the longitude is at index 3
       }));
 
       addMarkersToMap(locations);
@@ -131,6 +146,7 @@ document.getElementById('csvForm').addEventListener('submit', function(event) {
 document.getElementById('resetButton').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent form submission
   document.getElementById('stateFilter').value = ''; // Reset state filter
+  document.getElementById('categoryFilter').value = ''; // Reset category filter
   map.eachLayer(function(layer) {
     if (layer instanceof L.Marker) {
       map.removeLayer(layer);
@@ -144,6 +160,7 @@ document.getElementById('downloadButton').addEventListener('click', function(eve
   event.preventDefault(); // Prevent form submission
 
   const stateFilter = document.getElementById('stateFilter').value.toUpperCase();
+  const categoryFilter = document.getElementById('categoryFilter').value; // Get category filter value
 
   fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/data.csv')
     .then(response => response.json())
@@ -151,8 +168,9 @@ document.getElementById('downloadButton').addEventListener('click', function(eve
       const csvContent = atob(data.content); // Decode content from base64
       const rows = csvContent.trim().split('\n').map(row => row.split(','));
       const filteredRows = rows.filter(row => {
-        const stusps = row[2].toUpperCase(); // Assuming the STUSPS column is at index 2
-        return !stateFilter || stusps === stateFilter;
+        const stusps = row[4].toUpperCase(); // Assuming the STUSPS column is at index 4
+        const ftCategory = row[14]; // Assuming the ft_category column is at index 5
+        return (!stateFilter || stusps === stateFilter) && (!categoryFilter || ftCategory === categoryFilter);
       });
 
       const csvData = convertArrayOfObjectsToCSV(filteredRows);
