@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Data</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSV to Table</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
 </head>
 <body>
-    <h1>Table Data</h1>
-    <table>
+
+<h2>CSV to Table</h2>
+
+<form id="csvForm">
+  <label for="csvFile">Select a CSV file:</label>
+  <input type="file" id="csvFile" accept=".csv">
+  <input type="submit" value="Load CSV">
+</form>
+
+<div id="tableContainer"></div>
+
+<script>
+document.getElementById('csvForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  const fileInput = document.getElementById('csvFile');
+  const file = fileInput.files[0];
+  
+  if (!file) {
+    alert('Please select a CSV file.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    const csvData = event.target.result;
+    const rows = csvData.trim().split('\n').map(row => row.split(','));
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <thead>
         <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <!-- Add more <th> elements for additional columns -->
+          ${rows[0].map(header => `<th>${header}</th>`).join('')}
         </tr>
-        <?php
-            // Database configuration
-            $host = 'ft-wells.clg2kss0wad6.us-east-2.rds.amazonaws.com';
-            $dbname = 'postgres';
-            $user = 'fractracker';
-            $password = 'Cam#2d6Ju2&Wx';
-            $table = 'smallsample';
+      </thead>
+      <tbody>
+        ${rows.slice(1).map(row => `
+          <tr>
+            ${row.map(cell => `<td>${cell}</td>`).join('')}
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+    document.getElementById('tableContainer').innerHTML = '';
+    document.getElementById('tableContainer').appendChild(table);
+  };
+  reader.readAsText(file);
+});
+</script>
 
-            try {
-                // Connect to PostgreSQL database
-                $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-
-                // Prepare and execute query
-                $stmt = $pdo->prepare("SELECT * FROM $table");
-                $stmt->execute();
-
-                // Fetch all rows from the result set
-                $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // Output rows as table rows
-                foreach ($rows as $row) {
-                    echo "<tr>";
-                    foreach ($row as $column) {
-                        echo "<td>$column</td>";
-                    }
-                    echo "</tr>";
-                }
-
-                // Close connection
-                $pdo = null;
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-        ?>
-    </table>
 </body>
 </html>
-
