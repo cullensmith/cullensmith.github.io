@@ -159,7 +159,7 @@ document.getElementById('downloadButton').addEventListener('click', function(eve
   const stateFilter = document.getElementById('stateFilter').value.toUpperCase();
   const categoryFilter = document.getElementById('categoryFilter').value; // Get category filter value
 
-  fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/orv1.csv')
+  fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/orv7.csv')
     .then(response => response.json())
     .then(data => {
       const csvContent = atob(data.content); // Decode content from base64
