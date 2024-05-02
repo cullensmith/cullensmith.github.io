@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Version of FracTracker Data Portal</title>
+<style>
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+  #tableContainer {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  #resultCount {
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Demo Version of FracTracker Data Portal</h2>
+
+<div id="map"></div>
+
+<div id="resultCount"></div> <!-- Placeholder for result count -->
+
+<form id="csvForm">
+  <p>Use the dropdowns below to select your filters (demo max set to 500 records)</p>
+  <label for="stateFilter">Filter by State:</label>
+  <select id="stateFilter">
+    <option value="">Please choose from below</option>
+    <option value="PA">PA</option>
+    <option value="WV">WV</option>
+  </select>
+  <p></p>
+  <label for="categoryFilter">Filter by FracTracker Category:</label>
+  <select id="categoryFilter">
+    <option value="">All</option>
+    <option value="Production Well">Production Well</option>
+    <option value="Injection / Storage / Service">Injection / Storage / Service</option>
+    <option value="Orphaned / Abandoned / Unverified Plug">Orphaned / Abandoned / Unverified Plug</option>
+    <option value="Other / Unknown">Other / Unknown</option>
+    <option value="Not Drilled">Not Drilled</option>
+    <option value="Plugged">Plugged</option>
+    <!-- Add options for categories here -->
+  </select><p></p>
+  
+  <input type="submit" value="Apply Filter">
+  <button type="button" id="resetButton">Reset</button>
+  <button type="button" id="downloadButton">Download CSV</button>
+</form>
+
+<div id="tableContainer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+<script>
+// Initialize Leaflet map
+var map = L.map('map').setView([40.73061, -73.935242], 6); // Default view centered on NYC
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Function to add markers to map
+function addMarkersToMap(locations) {
+  locations.forEach(location => {
+    L.marker([location.latitude, location.longitude]).addTo(map)
+      .bindPopup(location.name);
+  });
+}
+
+// Function to convert array to CSV
+function convertArrayOfObjectsToCSV(array) {
+  const header = Object.keys(array[0]).join(',');
+  const csv = array.map(row => Object.values(row).join(',')).join('\n');
+  return `${header}\n${csv}`;
+}
+
+document.getElementById('csvForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  const stateFilter = document.getElementById('stateFilter').value.toUpperCase();
+  const categoryFilter = document.getElementById('categoryFilter').value; // Get category filter value
+
+  fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/data.csv')
+    .then(response => response.json())
+    .then(data => {
+      const csvContent = atob(data.content); // Decode content from base64
+      const rows = csvContent.trim().split('\n').map(row => row.split(','));
+      const filteredRows = rows.filter(row => {
+        const stusps = row[4].toUpperCase(); // Assuming the STUSPS column is at index 4
+        const ftCategory = row[14]; // Assuming the ft_category column is at index 5
+        return (!stateFilter || stusps === stateFilter) && (!categoryFilter || ftCategory === categoryFilter);
+      });
+
+      const locations = filteredRows.map(row => ({
+        name: row[0], // Assuming the location name is at index 0
+        latitude: parseFloat(row[2].replace(/['"]+/g, '')), // Assuming the latitude is at index 2
+        longitude: parseFloat(row[3].replace(/['"]+/g, '')) // Assuming the longitude is at index 3
+      }));
+
+      addMarkersToMap(locations);
+
+      const tableContainer = document.getElementById('tableContainer');
+      const table = document.createElement('table');
+      table.innerHTML = `
+        <thead>
+          <tr>
+            ${rows[0].map(header => `<th>${header}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${filteredRows.slice(0, 15).map(row => `
+            <tr>
+              ${row.map(cell => `<td>${cell}</td>`).join('')}
+            </tr>
+          `).join('')}
+        </tbody>
+      `;
+      tableContainer.innerHTML = '';
+      tableContainer.appendChild(table);
+
+      // Update result count
+      document.getElementById('resultCount').textContent = `Number of results: ${filteredRows.length}`;
+    })
+    .catch(error => console.error('Error fetching CSV:', error));
+});
+
+document.getElementById('resetButton').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent form submission
+  document.getElementById('stateFilter').value = ''; // Reset state filter
+  document.getElementById('categoryFilter').value = ''; // Reset category filter
+  map.eachLayer(function(layer) {
+    if (layer instanceof L.Marker) {
+      map.removeLayer(layer);
+    }
+  });
+  document.getElementById('tableContainer').innerHTML = ''; // Clear table
+  document.getElementById('resultCount').textContent = ''; // Clear result count
+});
+
+document.getElementById('downloadButton').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  const stateFilter = document.getElementById('stateFilter').value.toUpperCase();
+  const categoryFilter = document.getElementById('categoryFilter').value; // Get category filter value
+
+  fetch('https://api.github.com/repos/cullensmith/cullensmith.github.io/contents/tmp_portal/data.csv')
+    .then(response => response.json())
+    .then(data => {
+      const csvContent = atob(data.content); // Decode content from base64
+      const rows = csvContent.trim().split('\n').map(row => row.split(','));
+      const filteredRows = rows.filter(row => {
+        const stusps = row[4].toUpperCase(); // Assuming the STUSPS column is at index 4
+        const ftCategory = row[14]; // Assuming the ft_category column is at index 5
+        return (!stateFilter || stusps === stateFilter) && (!categoryFilter || ftCategory === categoryFilter);
+      });
+
+      const csvData = convertArrayOfObjectsToCSV(filteredRows);
+
+      // Create a download link
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'filtered_data.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    })
+    .catch(error => console.error('Error fetching CSV:', error));
+});
+</script>
+
+</body>
+</html>
