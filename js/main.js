@@ -82,6 +82,62 @@ class Carousel {
   }
 }
 
+/* ─── More Info modal ────────────────────────────────────── */
+function initModal() {
+  const overlay  = document.getElementById('modal-overlay');
+  const titleEl  = document.getElementById('modal-title');
+  const detailEl = document.getElementById('modal-detail');
+  const closeBtn = overlay.querySelector('.modal-close');
+  let lastFocused = null;
+
+  // Inject button into every slide-media
+  document.querySelectorAll('.carousel-slide').forEach(slide => {
+    const media = slide.querySelector('.slide-media');
+    if (!media) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'more-info-btn';
+    btn.textContent = 'More Info';
+    btn.setAttribute('aria-haspopup', 'dialog');
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const title  = slide.querySelector('.slide-title')?.textContent ?? '';
+      // data-modal-detail overrides the default caption text
+      const detail = slide.dataset.modalDetail
+        ?? slide.querySelector('.slide-desc')?.textContent
+        ?? '';
+      openModal(title, detail, btn);
+    });
+
+    media.appendChild(btn);
+  });
+
+  function openModal(title, detail, trigger) {
+    lastFocused    = trigger;
+    titleEl.textContent  = title;
+    detailEl.textContent = detail;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => closeBtn.focus());
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lastFocused?.focus();
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+  });
+}
+
 /* ─── Active nav via IntersectionObserver ────────────────── */
 function initNav() {
   const sections  = [...document.querySelectorAll('section[id]')];
@@ -113,5 +169,6 @@ function initNav() {
 /* ─── Init ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-carousel]').forEach(el => new Carousel(el));
+  initModal();
   initNav();
 });
