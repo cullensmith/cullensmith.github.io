@@ -504,16 +504,16 @@ a {
   outline-offset: 2px;
 }
 
-/* dark theme adjustment — white bg becomes surface */
+/* dark theme adjustment — light gray with dark text */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .more-info-btn {
-    background: rgba(19, 27, 23, 0.82);
-    color: var(--text);
+    background: rgba(218, 224, 218, 0.9);
+    color: #131918;
   }
 }
 :root[data-theme="dark"] .more-info-btn {
-  background: rgba(19, 27, 23, 0.82);
-  color: var(--text);
+  background: rgba(218, 224, 218, 0.9);
+  color: #131918;
 }
 
 
