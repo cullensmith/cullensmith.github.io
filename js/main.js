@@ -1,0 +1,117 @@
+'use strict';
+
+/* ─── Carousel ───────────────────────────────────────────── */
+class Carousel {
+  constructor(el) {
+    this.el         = el;
+    this.viewport   = el.querySelector('.carousel-viewport');
+    this.track      = el.querySelector('.carousel-track');
+    this.slides     = [...el.querySelectorAll('.carousel-slide')];
+    this.prevBtn    = el.querySelector('.carousel-btn-prev');
+    this.nextBtn    = el.querySelector('.carousel-btn-next');
+    this.dots       = [...el.closest('.section-inner').querySelectorAll('.carousel-dot')];
+    this.current    = 0;
+    this.total      = this.slides.length;
+    this.GAP        = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gap-slide')) || 28;
+    this.dragging   = false;
+    this.dragStartX = 0;
+
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    this.dots.forEach((dot, i) => dot.addEventListener('click', () => this.goTo(i)));
+
+    // Keyboard nav
+    el.setAttribute('tabindex', '0');
+    el.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); this.prev(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); this.next(); }
+    });
+
+    // Touch/drag swipe
+    this.viewport.addEventListener('touchstart', e => {
+      this.dragStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    this.viewport.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - this.dragStartX;
+      if (Math.abs(dx) > 48) dx < 0 ? this.next() : this.prev();
+    }, { passive: true });
+
+    // Recalculate on resize
+    const ro = new ResizeObserver(() => this.update(false));
+    ro.observe(this.viewport);
+
+    this.update(false);
+  }
+
+  slideWidth() {
+    return this.slides[0]?.offsetWidth ?? this.viewport.offsetWidth * 0.68;
+  }
+
+  goTo(index) {
+    this.current = Math.max(0, Math.min(index, this.total - 1));
+    this.update(true);
+  }
+
+  prev() { this.goTo(this.current - 1); }
+  next() { this.goTo(this.current + 1); }
+
+  update(animate) {
+    const vw      = this.viewport.offsetWidth;
+    const sw      = this.slideWidth();
+    const peek    = (vw - sw) / 2;
+    const offset  = peek - this.current * (sw + this.GAP);
+
+    this.track.style.transition = animate
+      ? `transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+      : 'none';
+    this.track.style.transform = `translateX(${offset}px)`;
+
+    this.slides.forEach((s, i) => {
+      s.classList.toggle('is-active', i === this.current);
+      s.setAttribute('aria-hidden', String(i !== this.current));
+    });
+
+    this.dots.forEach((d, i) => {
+      d.classList.toggle('is-active', i === this.current);
+      d.setAttribute('aria-selected', String(i === this.current));
+    });
+
+    this.prevBtn.disabled = this.current === 0;
+    this.nextBtn.disabled = this.current === this.total - 1;
+  }
+}
+
+/* ─── Active nav via IntersectionObserver ────────────────── */
+function initNav() {
+  const sections  = [...document.querySelectorAll('section[id]')];
+  const navLinks  = [...document.querySelectorAll('.nav-link')];
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach(link => {
+        link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+      });
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Smooth scroll with offset for fixed header
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+/* ─── Init ───────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-carousel]').forEach(el => new Carousel(el));
+  initNav();
+});

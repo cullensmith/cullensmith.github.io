@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cullen Smith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="site-name">Cullen Smith</p>
+      <nav class="site-nav" aria-label="Portfolio sections">
+        <a href="#full-stack" class="nav-link">Full Stack</a>
+        <a href="#custom-widgets" class="nav-link">Custom Widgets</a>
+        <a href="#static-maps" class="nav-link">Static Maps</a>
+        <a href="#spatial-analysis" class="nav-link">Spatial Analysis</a>
+        <a href="#3d-models" class="nav-link">3D Models</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Full Stack ─────────────────────────────────────────── -->
+    <section id="full-stack" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Full Stack</h2>
+          <p class="section-sub">End-to-end Django applications and REST APIs</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous project" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <!-- Replace this placeholder div with your iframe, e.g.:
+                         <iframe src="https://your-django-app.com" title="Project Name" loading="lazy"></iframe> -->
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Django Application</p>
+                      <code class="ph-hint">src="https://your-app.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Project Name</h3>
+                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Django Application</p>
+                      <code class="ph-hint">src="https://your-app.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Project Name</h3>
+                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Django Application</p>
+                      <code class="ph-hint">src="https://your-app.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Project Name</h3>
+                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next project">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Custom Widgets ─────────────────────────────────────── -->
+    <section id="custom-widgets" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Custom Widgets</h2>
+          <p class="section-sub">Interactive components and embeddable data tools</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous widget" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Embeddable Widget</p>
+                      <code class="ph-hint">src="https://your-widget.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Widget Name</h3>
+                    <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Embeddable Widget</p>
+                      <code class="ph-hint">src="https://your-widget.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Widget Name</h3>
+                    <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--frame">
+                    <div class="frame-placeholder">
+                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
+                      <p class="ph-label">Embeddable Widget</p>
+                      <code class="ph-hint">src="https://your-widget.com"</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Widget Name</h3>
+                    <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next widget">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Static Maps ────────────────────────────────────────── -->
+    <section id="static-maps" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Static Maps</h2>
+          <p class="section-sub">Cartographic design and print-ready map production</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous map" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <!-- Replace with: <img src="assets/images/map-1.jpg" alt="Descriptive alt text"> -->
+                    <div class="img-placeholder img-placeholder--map">
+                      <p class="ph-label">Map Image</p>
+                      <code class="ph-hint">assets/images/map-1.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Map Title</h3>
+                    <p class="slide-desc">Region, purpose, and any notable cartographic decisions made for this piece.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--map">
+                      <p class="ph-label">Map Image</p>
+                      <code class="ph-hint">assets/images/map-2.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Map Title</h3>
+                    <p class="slide-desc">Region, purpose, and any notable cartographic decisions made for this piece.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--map">
+                      <p class="ph-label">Map Image</p>
+                      <code class="ph-hint">assets/images/map-3.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Map Title</h3>
+                    <p class="slide-desc">Region, purpose, and any notable cartographic decisions made for this piece.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next map">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Spatial Analysis ───────────────────────────────────── -->
+    <section id="spatial-analysis" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Spatial Analysis</h2>
+          <p class="section-sub">GIS workflows, geoprocessing, and data-driven insights</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous analysis" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <!-- Replace with: <img src="assets/images/analysis-1.jpg" alt="Descriptive alt text"> -->
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Analysis Output</p>
+                      <code class="ph-hint">assets/images/analysis-1.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Analysis Title</h3>
+                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Analysis Output</p>
+                      <code class="ph-hint">assets/images/analysis-2.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Analysis Title</h3>
+                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Analysis Output</p>
+                      <code class="ph-hint">assets/images/analysis-3.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Analysis Title</h3>
+                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next analysis">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3D Models ──────────────────────────────────────────── -->
+    <section id="3d-models" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">3D Models</h2>
+          <p class="section-sub">Terrain visualization and three-dimensional spatial modeling</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous model" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <!-- Replace with: <img src="assets/images/model-1.jpg" alt="Descriptive alt text"> -->
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/model-1.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/model-2.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/model-3.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next model">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
