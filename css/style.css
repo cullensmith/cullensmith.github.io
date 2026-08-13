@@ -430,9 +430,9 @@ a {
   top: 0.75rem;
   right: 0.75rem;
   z-index: 5;
-  padding: 0.3rem 0.7rem;
+  padding: 0.6rem 1.4rem;
   font-family: var(--font-body);
-  font-size: 0.6875rem;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text);
@@ -442,6 +442,7 @@ a {
   cursor: pointer;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
