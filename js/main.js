@@ -82,6 +82,28 @@ class Carousel {
   }
 }
 
+/* ─── Theme toggle ───────────────────────────────────────── */
+function initThemeToggle() {
+  const btn  = document.querySelector('.theme-toggle');
+  const root = document.documentElement;
+
+  // Apply saved preference before first paint
+  const saved = localStorage.getItem('theme');
+  if (saved) root.setAttribute('data-theme', saved);
+
+  btn.addEventListener('click', () => {
+    const isDark =
+      root.getAttribute('data-theme') === 'dark' ||
+      (!root.hasAttribute('data-theme') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    const next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  });
+}
+
 /* ─── More Info modal ────────────────────────────────────── */
 function initModal() {
   const overlay  = document.getElementById('modal-overlay');
@@ -168,6 +190,7 @@ function initNav() {
 
 /* ─── Init ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   document.querySelectorAll('[data-carousel]').forEach(el => new Carousel(el));
   initModal();
   initNav();
