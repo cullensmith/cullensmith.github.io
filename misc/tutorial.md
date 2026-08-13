@@ -86,6 +86,36 @@ A complete image slide:
 
 > **Supported formats:** JPG, PNG, WebP, and GIF all work. Images fill the full slide height so anything around 1800px wide is plenty.
 
+### Image dimensions and display mode
+
+The slide media area is a **5:3 landscape ratio** (close to 16:10). On a 1920×1080 display it's roughly 1300×780px; on 1440×900 it's closer to 970×600px. Exporting at **1600×960** covers both without upscaling.
+
+The site is currently set to `object-fit: contain`, which shows the entire image with neutral padding on the sides or top/bottom when the image ratio doesn't match the slide. This is the safest choice for maps where cropping any part is undesirable.
+
+The alternative is `object-fit: cover`, which fills the slide completely but crops anything outside the ratio. If you switch back to cover, you can control exactly which part of the image stays visible using `object-position` on each `<img>` tag:
+
+```html
+<!-- default: center of image (no attribute needed) -->
+<img src="..." alt="...">
+
+<!-- keep top of image visible — good for north-up maps with a title block at top -->
+<img src="..." alt="..." style="object-position: top center">
+
+<!-- keep left side visible -->
+<img src="..." alt="..." style="object-position: left center">
+
+<!-- fine-grained control: x% from left, y% from top -->
+<img src="..." alt="..." style="object-position: 60% 30%">
+```
+
+To switch between modes, find this line in `css/style.css` and change the value:
+
+```css
+.slide-media img {
+  object-fit: contain; /* change to "cover" to fill and crop */
+}
+```
+
 ---
 
 ## 3. Iframe sections
