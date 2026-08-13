@@ -201,6 +201,44 @@ A few notes:
 </article>
 ```
 
+### Building interactive maps without an Esri account
+
+For the Custom Widgets section in particular, a common goal is embedding an interactive map built with the ArcGIS Maps SDK. Here's how to do it without needing ArcGIS Online.
+
+**Skip Experience Builder** — it's a hosted no-code tool that requires an ArcGIS Online account to open. Instead, use the **ArcGIS Maps SDK for JavaScript** directly. It's more flexible, has no builder dependency, and produces a plain HTML/JS app you can host anywhere.
+
+**Replace Esri services with free alternatives:**
+
+| What you'd normally use Esri for | Free alternative |
+|---|---|
+| Basemap | Mapbox (free tier: 50k loads/month) or OpenStreetMap (unlimited) |
+| Hosted feature layers | Your own GeoJSON — served as a static file or a Django endpoint |
+
+A minimal account-free map setup:
+
+```javascript
+import Map from "@arcgis/core/Map.js";
+import MapView from "@arcgis/core/views/MapView.js";
+import GeoJSONLayer from "@arcgis/core/layers/GeoJSONLayer.js";
+import WebTileLayer from "@arcgis/core/layers/WebTileLayer.js";
+
+// Mapbox basemap (swap in your token)
+const basemap = new WebTileLayer({
+  urlTemplate: "https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=YOUR_TOKEN",
+  tileInfo: /* standard 256px tile info */
+});
+
+// Your own GeoJSON — static file or Django endpoint
+const dataLayer = new GeoJSONLayer({
+  url: "https://your-site.com/api/data.geojson"
+});
+
+const map = new Map({ layers: [basemap, dataLayer] });
+const view = new MapView({ container: "viewDiv", map });
+```
+
+The resulting app is a self-contained HTML/JS project you host on GitHub Pages or PythonAnywhere and embed in the portfolio via iframe — same as any other slide. The only credential involved is the Mapbox token, which can be restricted to your domain in the Mapbox dashboard.
+
 ---
 
 ## 4. Adding or removing slides
