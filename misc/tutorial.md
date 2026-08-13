@@ -114,7 +114,44 @@ Find the slide you want to update. Inside its `.slide-media` div you'll see a `<
 </div>
 ```
 
-> **Cross-origin note:** The app being embedded needs to allow iframing. Make sure its server sends `X-Frame-Options: ALLOWALL` or a permissive `Content-Security-Policy: frame-ancestors` header. Apps hosted on the same domain should work without changes.
+### Allowing the portfolio to iframe a Django app (PythonAnywhere)
+
+Django blocks iframing by default via its clickjacking protection middleware. Rather than opening it up to everyone, the cleanest approach is a custom middleware that whitelists only this portfolio's domain.
+
+In your Django project, create a `middleware.py` file (or add to an existing one):
+
+```python
+class EmbedAllowlistMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        response['X-Frame-Options'] = 'ALLOWFROM https://your-github-username.github.io'
+        response['Content-Security-Policy'] = "frame-ancestors 'self' https://your-github-username.github.io"
+        return response
+```
+
+Then in `settings.py`:
+
+```python
+MIDDLEWARE = [
+    # remove or comment out the default clickjacking middleware:
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # add your allowlist middleware (adjust path to match your app):
+    'yourapp.middleware.EmbedAllowlistMiddleware',
+    ...
+]
+```
+
+After saving, go to the **Web** tab in PythonAnywhere and hit **Reload**.
+
+A few notes:
+- `X-Frame-Options: ALLOWFROM` is the older header — browser support is inconsistent, but it's harmless to include
+- `Content-Security-Policy: frame-ancestors` is what modern browsers actually enforce — this is the one that matters
+- For local testing, add `http://localhost:5500` (or whatever port you use) as a space-separated value: `"frame-ancestors 'self' https://your-github-username.github.io http://localhost:5500"`
+- Third-party sites you don't control (e.g. `fractracker.org`) set their own headers and cannot be iframed regardless of what you do here
 
 ### A complete iframe slide:
 
