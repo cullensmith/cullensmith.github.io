@@ -136,6 +136,22 @@ a {
   padding: 0 2rem;
 }
 
+.header-email {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+
+.header-email:hover {
+  color: var(--accent);
+}
+
 .theme-toggle {
   position: absolute;
   right: 1.25rem;
