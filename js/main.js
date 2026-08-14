@@ -125,21 +125,22 @@ function initModal() {
 
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      const title  = slide.querySelector('.slide-title')?.textContent ?? '';
-      // data-modal-detail overrides the default caption text
-      const detail = slide.dataset.modalDetail
-        ?? slide.querySelector('.slide-desc')?.textContent
-        ?? '';
-      openModal(title, detail, btn);
+      const title       = slide.querySelector('.slide-title')?.textContent ?? '';
+      const modalDiv    = slide.querySelector('.slide-modal');
+      // .slide-modal hidden div takes priority; fall back to caption text
+      const detailHTML  = modalDiv
+        ? modalDiv.innerHTML
+        : `<p>${slide.querySelector('.slide-desc')?.textContent ?? ''}</p>`;
+      openModal(title, detailHTML, btn);
     });
 
     media.appendChild(btn);
   });
 
-  function openModal(title, detail, trigger) {
-    lastFocused    = trigger;
-    titleEl.textContent  = title;
-    detailEl.textContent = detail;
+  function openModal(title, detailHTML, trigger) {
+    lastFocused       = trigger;
+    titleEl.textContent = title;
+    detailEl.innerHTML  = detailHTML;
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';

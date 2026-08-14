@@ -610,7 +610,20 @@ a {
   font-size: 0.9375rem;
   color: var(--text-muted);
   line-height: 1.7;
-  white-space: pre-wrap;
+}
+
+.modal-detail p + p {
+  margin-top: 0.875rem;
+}
+
+.modal-detail ul,
+.modal-detail ol {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.modal-detail li + li {
+  margin-top: 0.25rem;
 }
 
 

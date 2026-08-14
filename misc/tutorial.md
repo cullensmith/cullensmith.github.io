@@ -266,18 +266,37 @@ The resulting app is a self-contained HTML/JS project you host on GitHub Pages o
 
 ## 5. Writing More Info modal content
 
-By default the modal shows the slide's title and the short caption description. To add extended copy — methodology, tools used, client context — add a `data-modal-detail` attribute to the `<article>` tag:
+By default the modal shows the slide's title and the short caption text. To add extended copy — methodology, tools used, client context, multiple paragraphs — add a hidden `<div class="slide-modal">` inside the `<article>` tag:
 
 ```html
-<article class="carousel-slide"
-         data-modal-detail="Adirondack Park boundary rendered using LiDAR-derived
-elevation data. Produced in QGIS with a custom hillshade layer and contour styling
-at 50m intervals. Final output at 24×36 inches, 300 DPI, for print.">
+<article class="carousel-slide">
+  <div class="slide-content">
+    <!-- ...media and caption as normal... -->
+  </div>
+
+  <div class="slide-modal" hidden>
+    <p>First paragraph — overview of the project or map.</p>
+    <p>Second paragraph — methodology, tools used, data sources.</p>
+    <p>Third paragraph — outcome, client context, anything else relevant.</p>
+  </div>
+</article>
 ```
 
-The modal title is always pulled from the `.slide-title` element — no separate attribute needed for that.
+The `hidden` attribute keeps the div invisible on the page. When the More Info button is clicked, its `innerHTML` is read directly into the modal body, so any valid HTML works — paragraphs, lists, etc.:
 
-> **Multi-paragraph text:** Use two newlines between paragraphs inside the attribute value and they'll render as visual line breaks in the modal.
+```html
+<div class="slide-modal" hidden>
+  <p>Adirondack Park boundary rendered using LiDAR-derived elevation data.</p>
+  <p>Produced in QGIS with a custom hillshade layer and contour styling at 50m intervals.</p>
+  <ul>
+    <li>Software: QGIS 3.28</li>
+    <li>Data: NYS LiDAR 2019</li>
+    <li>Output: 24×36 in, 300 DPI</li>
+  </ul>
+</div>
+```
+
+The modal title is always pulled from the `.slide-title` element — no separate attribute needed for that. If no `.slide-modal` div is present, the modal falls back to showing the short caption description.
 
 ---
 
