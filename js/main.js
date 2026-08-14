@@ -120,7 +120,7 @@ function initModal() {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'more-info-btn';
-    btn.textContent = 'More Info';
+    btn.textContent = 'More Info...';
     btn.setAttribute('aria-haspopup', 'dialog');
 
     btn.addEventListener('click', e => {
@@ -161,6 +161,39 @@ function initModal() {
   });
 }
 
+/* ─── Section nav (up/down) ──────────────────────────────── */
+function initSectionNav() {
+  const sections = [...document.querySelectorAll('section[id]')];
+  const upBtn    = document.getElementById('section-nav-up');
+  const downBtn  = document.getElementById('section-nav-down');
+  let current    = 0;
+
+  function update(index) {
+    current          = index;
+    upBtn.disabled   = index === 0;
+    downBtn.disabled = index === sections.length - 1;
+  }
+
+  upBtn.addEventListener('click', () => {
+    sections[current - 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  downBtn.addEventListener('click', () => {
+    sections[current + 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const i = sections.indexOf(entry.target);
+      if (i !== -1) update(i);
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+  update(0);
+}
+
 /* ─── Active nav via IntersectionObserver ────────────────── */
 function initNav() {
   const sections  = [...document.querySelectorAll('section[id]')];
@@ -194,5 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   document.querySelectorAll('[data-carousel]').forEach(el => new Carousel(el));
   initModal();
+  initSectionNav();
   initNav();
 });
