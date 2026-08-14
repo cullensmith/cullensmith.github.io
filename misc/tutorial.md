@@ -24,7 +24,8 @@ aug2026/
 ├── js/main.js              ← carousel + modal logic
 └── assets/
     └── images/
-        ├── static-maps/    ← drop map images here
+        ├── static-maps/        ← drop map images here
+        ├── data-engineering/   ← pipeline diagrams, architecture charts
         ├── spatial-analysis/
         └── 3d-models/
 ```

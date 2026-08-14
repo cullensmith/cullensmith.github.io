@@ -16,6 +16,7 @@
       <p class="site-name">Cullen Smith</p>
       <nav class="site-nav" aria-label="Portfolio sections">
         <a href="#full-stack" class="nav-link">Full Stack</a>
+        <a href="#data-engineering" class="nav-link">Data Engineering</a>
         <a href="#custom-widgets" class="nav-link">Custom Widgets</a>
         <a href="#static-maps" class="nav-link">Static Maps</a>
         <a href="#spatial-analysis" class="nav-link">Spatial Analysis</a>
@@ -57,9 +58,14 @@
                     </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Project Name</h3>
-                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                    <h3 class="slide-title">Production Data Portal</h3>
+                    <p class="slide-desc">The Django frontend for an ETL pipeline</p>
                   </div>
+                </div>
+                <div class="slide-modal" hidden>
+                  <p>The FracTracker Oil & Gas Wells Data Portal was developed as a public facing self service application. I was the sole developer of both this frontend application as well as the entire ETL pipeline that supplies it with the normalized data collected from dozens of state agencies.</p>
+                  <p>The application itself uses Django framework and the map interface takes advantage MapLibre GL JS's native inclusion of WebGL. Well counts add up quickly so we're fetching pre-rendered vector tiles from a google cloud bucket.</p>
+                  <p>You can find the live version at: <a href="https://wells.fractracker.org" target="_blank" rel="noopener" style="color: var(--text);">wells.fractracker.org</a></p>
                 </div>
               </article>
 
@@ -73,31 +79,92 @@
                     </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Project Name</h3>
-                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                    <h3 class="slide-title">Coming Soon!</h3>
+                    <p class="slide-desc">Transferring lessons learned into a personal project...</p>
+                  </div>
+                </div>
+              </article>
+
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next project">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Data Engineering ──────────────────────────────────── -->
+    <section id="data-engineering" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Data Engineering</h2>
+          <p class="section-sub">ETL pipelines, data modeling, and backend infrastructure</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <!-- Replace with: <img src="assets/images/data-engineering/your-file.png" alt="..."> -->
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Pipeline Diagram</p>
+                      <code class="ph-hint">assets/images/data-engineering/</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Pipeline Title</h3>
+                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
                   </div>
                 </div>
               </article>
 
               <article class="carousel-slide">
                 <div class="slide-content">
-                  <div class="slide-media slide-media--frame">
-                    <div class="frame-placeholder">
-                      <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
-                      <p class="ph-label">Django Application</p>
-                      <code class="ph-hint">src="https://your-app.com"</code>
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Pipeline Diagram</p>
+                      <code class="ph-hint">assets/images/data-engineering/</code>
                     </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Project Name</h3>
-                    <p class="slide-desc">Brief description of what this application does — the problem it solves and the stack behind it.</p>
+                    <h3 class="slide-title">Pipeline Title</h3>
+                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Pipeline Diagram</p>
+                      <code class="ph-hint">assets/images/data-engineering/</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Pipeline Title</h3>
+                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
                   </div>
                 </div>
               </article>
 
             </div>
           </div>
-          <button class="carousel-btn carousel-btn-next" aria-label="Next project">
+          <button class="carousel-btn carousel-btn-next" aria-label="Next">
             <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
           </button>
         </div>
