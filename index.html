@@ -18,9 +18,8 @@
         <a href="#full-stack" class="nav-link">Full Stack</a>
         <a href="#data-engineering" class="nav-link">Data Engineering</a>
         <a href="#custom-widgets" class="nav-link">Custom Widgets</a>
-        <a href="#static-maps" class="nav-link">Static Maps</a>
         <a href="#spatial-analysis" class="nav-link">Spatial Analysis</a>
-        <a href="#3d-models" class="nav-link">3D Models</a>
+        <a href="#maps-models" class="nav-link">Maps &amp; Models</a>
       </nav>
       <a class="header-email" href="mailto:keystone.carto@gmail.com">keystone.carto@gmail.com</a>
       <button class="theme-toggle" aria-label="Toggle dark mode">
@@ -70,7 +69,7 @@
                 </div>
               </article>
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--frame">
                     <div class="frame-placeholder">
@@ -84,7 +83,7 @@
                     <p class="slide-desc">Transferring lessons learned into a personal project...</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
 
             </div>
@@ -94,11 +93,11 @@
           </button>
         </div>
 
-        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+        <!-- <div class="carousel-dots" role="tablist" aria-label="Slide position">
           <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -107,7 +106,7 @@
       <div class="section-inner">
         <div class="section-header">
           <h2 class="section-title">Data Engineering</h2>
-          <p class="section-sub">ETL pipelines, data modeling, and backend infrastructure</p>
+          <p class="section-sub">Idempotent ETL/ELT pipelines, data modeling, and backend infrastructure</p>
         </div>
 
         <div class="carousel" data-carousel>
@@ -119,46 +118,24 @@
 
               <article class="carousel-slide">
                 <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <!-- Replace with: <img src="assets/images/data-engineering/your-file.png" alt="..."> -->
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Pipeline Diagram</p>
-                      <code class="ph-hint">assets/images/data-engineering/</code>
-                    </div>
+                  <div class="slide-media slide-media--frame">
+                    <iframe src="assets/images/data-engineering/wells-pipeline.html" title="Wells ETL Pipeline" loading="lazy"></iframe>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Pipeline Title</h3>
-                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
+                    <h3 class="slide-title">Oil &amp; Gas Well ELT Pipeline</h3>
+                    <p class="slide-desc">End-to-end pipeline scraping 40+ state agencies into a unified PostGIS schema, serving 3.5M+ wells to a public data portal.</p>
                   </div>
                 </div>
               </article>
 
               <article class="carousel-slide">
                 <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Pipeline Diagram</p>
-                      <code class="ph-hint">assets/images/data-engineering/</code>
-                    </div>
+                  <div class="slide-media slide-media--frame">
+                    <iframe src="assets/images/data-engineering/fcc-bdc-pipeline.html" title="Wells ETL Pipeline" loading="lazy"></iframe>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Pipeline Title</h3>
-                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Pipeline Diagram</p>
-                      <code class="ph-hint">assets/images/data-engineering/</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Pipeline Title</h3>
-                    <p class="slide-desc">Overview of the pipeline — what it ingests, transforms, and where it loads.</p>
+                    <h3 class="slide-title">Oil &amp; Gas Well ELT Pipeline</h3>
+                    <p class="slide-desc">End-to-end pipeline scraping 40+ state agencies into a unified PostGIS schema, serving 3.5M+ wells to a public data portal.</p>
                   </div>
                 </div>
               </article>
@@ -173,7 +150,7 @@
         <div class="carousel-dots" role="tablist" aria-label="Slide position">
           <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+          <!-- <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button> -->
         </div>
       </div>
     </section>
@@ -196,7 +173,7 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--frame">
-                      <!-- <iframe src="https://arlington-tx-schools.fractracker.org/" title="Project Name" loading="lazy"></iframe> -->
+                      <iframe src="https://arlington-tx-schools.fractracker.org/" title="Project Name" loading="lazy"></iframe>
                     <div class="frame-placeholder">
                       <svg class="ph-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/><path d="M4 14h40" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="11" r="1.5" fill="currentColor"/><circle cx="15" cy="11" r="1.5" fill="currentColor"/><circle cx="20" cy="11" r="1.5" fill="currentColor"/></svg>
                       <p class="ph-label">Embeddable Widget</p>
@@ -204,13 +181,18 @@
                     </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Widget Name</h3>
-                    <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
+                    <h3 class="slide-title">Buffer Query</h3>
+                    <p class="slide-desc">We wanted the ability to click on a feature and get counts at multiple buffers.</p>
                   </div>
+                </div>
+                <div class="slide-modal" hidden>
+                  <p>While there are buffer count tools available out of the box, we wanted the ability to have multiple rings produce their counts in a single click. It was taken a step farther by providing the user with the ability to edit the buffer color and radius as well as adding up to 5 total buffers.</p>
+                  <p>This was all made possible by leveraging the ArcGIS Maps SDK.</p>
+                  <p>You can find the live version at: <a href="https://arlington-tx-schools.fractracker.org" target="_blank" rel="noopener" style="color: var(--text);">arlington-tx-schools.fractracker.org</a></p>
                 </div>
               </article>
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--frame">
                     <div class="frame-placeholder">
@@ -224,9 +206,9 @@
                     <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--frame">
                     <div class="frame-placeholder">
@@ -240,11 +222,120 @@
                     <p class="slide-desc">What this widget does, how it's used, and what technologies power it.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
             </div>
           </div>
           <button class="carousel-btn carousel-btn-next" aria-label="Next widget">
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Slide position">
+          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+          <!-- <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Spatial Analysis ───────────────────────────────────── -->
+    <section id="spatial-analysis" class="portfolio-section">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2 class="section-title">Spatial Analysis</h2>
+          <p class="section-sub">GIS workflows, geoprocessing, and data-driven insights</p>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous analysis" disabled>
+            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/dual_los.png" alt="Dual line of sight analysis">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Dual Line of Sight</h3>
+                    <p class="slide-desc">Map title and description.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Analysis Output</p>
+                      <code class="ph-hint">assets/images/analysis-2.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Analysis Title</h3>
+                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--analysis">
+                      <p class="ph-label">Analysis Output</p>
+                      <code class="ph-hint">assets/images/analysis-3.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Analysis Title</h3>
+                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/household_counts_fullstate_30pct.png" alt="Household counts statewide map">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Household Counts</h3>
+                    <p class="slide-desc">Map title and description.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/wi_drivetimes.png" alt="Wisconsin drive times map">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Wisconsin Drive Times</h3>
+                    <p class="slide-desc">Map title and description.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/whiteloop6.png" alt="White loop map">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">White Loop</h3>
+                    <p class="slide-desc">Map title and description.</p>
+                  </div>
+                </div>
+              </article>
+
+
+            </div>
+          </div>
+          <button class="carousel-btn carousel-btn-next" aria-label="Next analysis">
             <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -257,16 +348,16 @@
       </div>
     </section>
 
-    <!-- ── Static Maps ────────────────────────────────────────── -->
-    <section id="static-maps" class="portfolio-section">
+    <!-- ── Maps & Models ─────────────────────────────────────── -->
+    <section id="maps-models" class="portfolio-section">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">Static Maps</h2>
-          <p class="section-sub">Cartographic design and print-ready map production</p>
+          <h2 class="section-title">Maps &amp; Models</h2>
+          <p class="section-sub">Cartographic design, print-ready maps, and terrain visualization</p>
         </div>
 
         <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" aria-label="Previous map" disabled>
+          <button class="carousel-btn carousel-btn-prev" aria-label="Previous" disabled>
             <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
           </button>
           <div class="carousel-viewport">
@@ -335,18 +426,6 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/dual_los.png" alt="Dual line of sight analysis">
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Dual Line of Sight</h3>
-                    <p class="slide-desc">Map title and description.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
                     <img src="assets/images/static-maps/glossy_square_30pct.png" alt="Glossy square map">
                   </div>
                   <div class="slide-caption">
@@ -371,28 +450,16 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/heat.png" alt="Heat map">
+                    <img src="assets/images/static-maps/la_longbeach_v2.png" alt="Heat map">
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Heat Map</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Oilfield Map</h3>
+                    <p class="slide-desc">Oilfields located in the Los Angeles metro area.</p>
                   </div>
                 </div>
               </article>
 
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/household_counts_fullstate_30pct.png" alt="Household counts statewide map">
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Household Counts</h3>
-                    <p class="slide-desc">Map title and description.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
                     <img src="assets/images/static-maps/priv_topo.png" alt="Topographic map">
@@ -402,7 +469,7 @@
                     <p class="slide-desc">Map title and description.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
               <article class="carousel-slide">
                 <div class="slide-content">
@@ -416,33 +483,54 @@
                 </div>
               </article>
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/whiteloop6.png" alt="White loop map">
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/3d-models/model-1.jpg</code>
+                    </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">White Loop</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/wi_drivetimes.png" alt="Wisconsin drive times map">
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/3d-models/model-2.jpg</code>
+                    </div>
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Wisconsin Drive Times</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
+
+              <!-- <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <div class="img-placeholder img-placeholder--3d">
+                      <p class="ph-label">3D Render</p>
+                      <code class="ph-hint">assets/images/3d-models/model-3.jpg</code>
+                    </div>
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Model Title</h3>
+                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
+                  </div>
+                </div>
+              </article> -->
 
             </div>
           </div>
-          <button class="carousel-btn carousel-btn-next" aria-label="Next map">
+          <button class="carousel-btn carousel-btn-next" aria-label="Next">
             <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -457,163 +545,14 @@
           <button class="carousel-dot" role="tab" aria-label="Slide 7" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 8" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 9" aria-selected="false"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 10" aria-selected="false"></button>
+          <!-- <button class="carousel-dot" role="tab" aria-label="Slide 10" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 11" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 12" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 13" aria-selected="false"></button>
           <button class="carousel-dot" role="tab" aria-label="Slide 14" aria-selected="false"></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Spatial Analysis ───────────────────────────────────── -->
-    <section id="spatial-analysis" class="portfolio-section">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2 class="section-title">Spatial Analysis</h2>
-          <p class="section-sub">GIS workflows, geoprocessing, and data-driven insights</p>
-        </div>
-
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" aria-label="Previous analysis" disabled>
-            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <!-- Replace with: <img src="assets/images/analysis-1.jpg" alt="Descriptive alt text"> -->
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Analysis Output</p>
-                      <code class="ph-hint">assets/images/analysis-1.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Analysis Title</h3>
-                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Analysis Output</p>
-                      <code class="ph-hint">assets/images/analysis-2.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Analysis Title</h3>
-                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Analysis Output</p>
-                      <code class="ph-hint">assets/images/analysis-3.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Analysis Title</h3>
-                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-          </div>
-          <button class="carousel-btn carousel-btn-next" aria-label="Next analysis">
-            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-
-        <div class="carousel-dots" role="tablist" aria-label="Slide position">
-          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 3D Models ──────────────────────────────────────────── -->
-    <section id="3d-models" class="portfolio-section">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2 class="section-title">3D Models</h2>
-          <p class="section-sub">Terrain visualization and three-dimensional spatial modeling</p>
-        </div>
-
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" aria-label="Previous model" disabled>
-            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M24 2L2 19L24 36V27H52V11H24V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="carousel-viewport">
-            <div class="carousel-track">
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <!-- Replace with: <img src="assets/images/model-1.jpg" alt="Descriptive alt text"> -->
-                    <div class="img-placeholder img-placeholder--3d">
-                      <p class="ph-label">3D Render</p>
-                      <code class="ph-hint">assets/images/model-1.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Model Title</h3>
-                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--3d">
-                      <p class="ph-label">3D Render</p>
-                      <code class="ph-hint">assets/images/model-2.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Model Title</h3>
-                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--3d">
-                      <p class="ph-label">3D Render</p>
-                      <code class="ph-hint">assets/images/model-3.jpg</code>
-                    </div>
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Model Title</h3>
-                    <p class="slide-desc">Source data, software used, and what the model communicates spatially.</p>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-          </div>
-          <button class="carousel-btn carousel-btn-next" aria-label="Next model">
-            <svg viewBox="0 0 54 38" fill="none" aria-hidden="true"><path d="M30 2L52 19L30 36V27H2V11H30V2Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-
-        <div class="carousel-dots" role="tablist" aria-label="Slide position">
-          <button class="carousel-dot is-active" role="tab" aria-label="Slide 1" aria-selected="true"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 2" aria-selected="false"></button>
-          <button class="carousel-dot" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 15" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 16" aria-selected="false"></button>
+          <button class="carousel-dot" role="tab" aria-label="Slide 17" aria-selected="false"></button> -->
         </div>
       </div>
     </section>

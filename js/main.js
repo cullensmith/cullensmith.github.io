@@ -116,6 +116,7 @@ function initModal() {
   document.querySelectorAll('.carousel-slide').forEach(slide => {
     const media = slide.querySelector('.slide-media');
     if (!media) return;
+    if (slide.closest('#maps-models')) return;
 
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -174,12 +175,24 @@ function initSectionNav() {
     downBtn.disabled = index === sections.length - 1;
   }
 
+  // Find the nearest section in a direction from the current scroll position.
+  // This ensures a partially-visible section is settled on before moving past it.
+  function nearestSection(direction) {
+    const h   = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72;
+    const y   = window.scrollY;
+    const thr = 8; // px tolerance so exact-snap position still advances
+    if (direction === 'down') {
+      return sections.find(s => s.offsetTop - h > y + thr) ?? null;
+    }
+    return [...sections].reverse().find(s => s.offsetTop - h < y - thr) ?? null;
+  }
+
   upBtn.addEventListener('click', () => {
-    sections[current - 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    nearestSection('up')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   downBtn.addEventListener('click', () => {
-    sections[current + 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    nearestSection('down')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   const observer = new IntersectionObserver(entries => {

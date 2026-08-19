@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Data Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F0F3F0;
+      --surface: #fff;
+      --accent: #1A5296;
+      --accent-soft: #E5EEF8;
+      --text: #131918;
+      --muted: #516059;
+      --border: #C8D2C8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0C1210;
+        --surface: #141F1C;
+        --accent: #5B9CE6;
+        --accent-soft: #0A1E38;
+        --text: #DAE0DA;
+        --muted: #7A9490;
+        --border: #2A3D38;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0C1210;
+      --surface: #141F1C;
+      --accent: #5B9CE6;
+      --accent-soft: #0A1E38;
+      --text: #DAE0DA;
+      --muted: #7A9490;
+      --border: #2A3D38;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1.25rem 1.25rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .diagram {
+      width: min(1200px, 100%);
+    }
+
+    /* ── Header ── */
+    .pipeline-header {
+      background: var(--accent);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .pipeline-header h1 {
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .pipeline-header .subtitle {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ── Stage grid ── */
+    .stages {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr 60px 1fr;
+      align-items: stretch;
+    }
+
+    .stage {
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.25rem 1.125rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .stage-phase {
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .stage-visual {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      min-height: 100px;
+    }
+
+    .stage-stat {
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 3.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.3rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stage-name {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.875rem;
+    }
+
+    .stage-tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* ── Connector ── */
+    .connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0 0.25rem;
+    }
+
+    .connector-label {
+      font-size: 0.54rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      margin-top: 0.875rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.875rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+
+    .stat-n {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-d {
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .stat-div {
+      width: 1px;
+      height: 1.75rem;
+      background: var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="diagram">
+    <div class="pipeline-header">
+      <h1>Agency Data Pipeline</h1>
+      <span class="subtitle">ETL &middot; Data Engineering</span>
+    </div>
+
+    <div class="stages">
+
+      <!-- Stage 1: Collect -->
+      <div class="stage">
+        <div class="stage-phase">Collect</div>
+        <div class="stage-visual">
+          <svg width="90" height="112" viewBox="0 0 90 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="52" width="70" height="54" rx="6" fill="var(--accent-soft)" stroke="var(--border)" stroke-width="1.5"/>
+            <rect x="12" y="43" width="70" height="54" rx="6" fill="var(--accent-soft)" stroke="var(--border)" stroke-width="1.5"/>
+            <rect x="6"  y="34" width="70" height="54" rx="6" fill="var(--accent-soft)" stroke="var(--border)" stroke-width="1.5"/>
+            <rect x="0"  y="14" width="70" height="54" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="10" y1="28" x2="50" y2="28" stroke="var(--border)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="10" y1="39" x2="44" y2="39" stroke="var(--border)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="10" y1="49" x2="47" y2="49" stroke="var(--border)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="10" y1="59" x2="40" y2="59" stroke="var(--border)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="stage-stat">38</div>
+        <div class="stage-name">State agencies<br>contributing data</div>
+        <div class="stage-tag">Data Collection</div>
+      </div>
+
+      <!-- Arrow 1 -->
+      <div class="connector">
+        <span class="connector-label">Extract</span>
+        <svg width="48" height="16" viewBox="0 0 48 16" fill="none">
+          <line x1="2" y1="8" x2="36" y2="8" stroke="var(--border)" stroke-width="2"/>
+          <path d="M32 3L44 8L32 13" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Stage 2: Normalize -->
+      <div class="stage">
+        <div class="stage-phase">Normalize</div>
+        <div class="stage-visual">
+          <svg width="170" height="108" viewBox="0 0 170 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="170" height="108" rx="8" fill="#1B2B32" stroke="var(--border)" stroke-width="1"/>
+            <rect width="170" height="24" rx="8" fill="#243840"/>
+            <rect y="16" width="170" height="8" fill="#243840"/>
+            <circle cx="16" cy="12" r="4.5" fill="#FF5F57"/>
+            <circle cx="30" cy="12" r="4.5" fill="#FFBD2E"/>
+            <circle cx="44" cy="12" r="4.5" fill="#28CA41"/>
+            <text x="12" y="44" font-family="'Courier New', monospace" font-size="10" fill="#5B9CE6">import</text>
+            <text x="59" y="44" font-family="'Courier New', monospace" font-size="10" fill="#DAE0DA"> pandas as pd</text>
+            <text x="12" y="58" font-family="'Courier New', monospace" font-size="10" fill="#5B9CE6">def </text>
+            <text x="35" y="58" font-family="'Courier New', monospace" font-size="10" fill="#61D6A0">normalize</text>
+            <text x="97" y="58" font-family="'Courier New', monospace" font-size="10" fill="#DAE0DA">(df):</text>
+            <text x="22" y="72" font-family="'Courier New', monospace" font-size="10" fill="#DAE0DA">df.dropna(inplace=True)</text>
+            <text x="22" y="86" font-family="'Courier New', monospace" font-size="10" fill="#DAE0DA">df.rename(cols, inplace=True)</text>
+            <text x="22" y="100" font-family="'Courier New', monospace" font-size="10" fill="#7A9490">  # standardize + type-cast</text>
+          </svg>
+        </div>
+        <div class="stage-name" style="font-size:0.75rem; font-weight:600; color:var(--text); margin-bottom:0.875rem;">
+          Parse &middot; validate &middot; standardize<br>deduplicate &middot; type-cast
+        </div>
+        <div class="stage-tag">Python 3 &middot; Pandas</div>
+      </div>
+
+      <!-- Arrow 2 -->
+      <div class="connector">
+        <span class="connector-label">Load</span>
+        <svg width="48" height="16" viewBox="0 0 48 16" fill="none">
+          <line x1="2" y1="8" x2="36" y2="8" stroke="var(--border)" stroke-width="2"/>
+          <path d="M32 3L44 8L32 13" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- Stage 3: Load -->
+      <div class="stage">
+        <div class="stage-phase">Load</div>
+        <div class="stage-visual">
+          <svg width="100" height="114" viewBox="0 0 100 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="24" width="84" height="74" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <ellipse cx="50" cy="24" rx="42" ry="12" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+            <ellipse cx="50" cy="98" rx="42" ry="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="12" y1="48" x2="88" y2="48" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,4" opacity="0.4"/>
+            <line x1="12" y1="66" x2="88" y2="66" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,4" opacity="0.4"/>
+            <line x1="12" y1="84" x2="88" y2="84" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5,4" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="stage-stat">5M</div>
+        <div class="stage-name">Records loaded into<br>production database</div>
+        <div class="stage-tag">PostgreSQL</div>
+      </div>
+
+    </div><!-- /stages -->
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+      <div class="stat">
+        <span class="stat-n">38</span>
+        <span class="stat-d">State Agencies</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-n">~131k</span>
+        <span class="stat-d">Records per Agency (avg)</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-n">5,000,000+</span>
+        <span class="stat-d">Total Records in PostgreSQL</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-n">Python 3</span>
+        <span class="stat-d">Normalization Engine</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

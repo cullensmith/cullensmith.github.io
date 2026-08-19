@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCC Broadband Data Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F0F3F0;
+      --surface: #FFFFFF;
+      --surface-dim: #E4E9E4;
+      --text: #131918;
+      --text-muted: #516059;
+      --accent: #1A5296;
+      --accent-soft: #E5EEF8;
+      --border: #C8D2C8;
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --radius: 9px;
+      --radius-sm: 5px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0C1210;
+        --surface: #131B17;
+        --surface-dim: #1A2520;
+        --text: #DCE8DC;
+        --text-muted: #7A9A80;
+        --accent: #5B9CE6;
+        --accent-soft: #0E1E38;
+        --border: #263830;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0C1210;
+      --surface: #131B17;
+      --surface-dim: #1A2520;
+      --text: #DCE8DC;
+      --text-muted: #7A9A80;
+      --accent: #5B9CE6;
+      --accent-soft: #0E1E38;
+      --border: #263830;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 28px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .hdr {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hdr-eye {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 7px;
+    }
+
+    .hdr-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-wrap: balance;
+      line-height: 1.1;
+    }
+
+    .hdr-sub {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .pipe-wrap {
+      width: 100%;
+      max-width: 980px;
+      overflow-x: auto;
+    }
+
+    .pipe {
+      display: flex;
+      align-items: stretch;
+      min-width: 720px;
+    }
+
+    .node {
+      flex: 1;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 15px 13px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .node--db {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .node-stage {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .node--db .node-stage {
+      color: var(--accent);
+      opacity: 0.75;
+    }
+
+    .node-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-top: 1px;
+    }
+
+    .node--db .node-name {
+      color: var(--accent);
+    }
+
+    .node-desc {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 3px;
+      flex: 1;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 5px;
+      background: var(--surface-dim);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chip--db {
+      background: transparent;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .arrow {
+      flex: 0 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--border);
+    }
+
+    .footer {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 0 18px;
+    }
+
+    .legend-sq {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+
+    .legend-sq--db {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .footer-rule {
+      width: 1px;
+      height: 18px;
+      background: var(--border);
+    }
+
+    .stat {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 0 18px;
+    }
+
+    .stat strong {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="hdr">
+    <!-- <div class="hdr-eye">Data Engineering</div> -->
+    <div class="hdr-title">FCC Broadband Data Pipeline</div>
+    <div class="hdr-sub">FCC BDC API → PostgreSQL / PostGIS → Database</div>
+  </div>
+
+  <div class="pipe-wrap">
+    <div class="pipe">
+
+      <!-- 1 · Source -->
+      <div class="node">
+        <div class="node-stage">Extract</div>
+        <div class="node-name">FCC BDC API</div>
+        <div class="node-desc">Programmatic retrieval of the latest Broadband Data Collection availability data across states and broadband technologies</div>
+        <div class="chips">
+          <span class="chip">REST API</span>
+          <span class="chip">JSON</span>
+          <span class="chip">Python</span>
+          <span class="chip">Dec. 2025</span>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 7H14M10 2L17 7L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 2 · Ingestion -->
+      <div class="node">
+        <div class="node-stage">Ingest</div>
+        <div class="node-name">API Ingestion</div>
+        <div class="node-desc">Iterate through state and technology requests, handle pagination and API responses, and capture source metadata for reproducible loads</div>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Requests</span>
+          <span class="chip">Pagination</span>
+          <span class="chip">Logging</span>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 7H14M10 2L17 7L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 3 · Transform -->
+      <div class="node">
+        <div class="node-stage">Transform</div>
+        <div class="node-name">Normalize &amp; Validate</div>
+        <div class="node-desc">Standardize provider, location, technology, speed, and release fields into a consistent analytical schema before loading</div>
+        <div class="chips">
+          <span class="chip">Pandas</span>
+          <span class="chip">Validation</span>
+          <span class="chip">Deduplication</span>
+          <span class="chip">Schema</span>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 7H14M10 2L17 7L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 4 · Database -->
+      <!-- <div class="node node--db"> -->
+      <div class="node node--db">
+        <div class="node-stage">Load</div>
+        <div class="node-name">PostgreSQL / PostGIS</div>
+        <div class="node-desc">Persistent relational store for broadband availability, providers, technologies, locations, and release-specific records</div>
+        <div class="chips">
+          <span class="chip chip--db">PostgreSQL</span>
+          <span class="chip chip--db">PostGIS</span>
+          <span class="chip chip--db">psycopg2</span>
+          <span class="chip chip--db">Indexes</span>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 7H14M10 2L17 7L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 5 · Serve -->
+      <div class="node">
+        <div class="node-stage">Serve</div>
+        <div class="node-name">Materialized Views</div>
+        <div class="node-desc">Update the materialized views accessed by analysts and applications</div>
+        <div class="chips">
+          <!-- <span class="chip">Django</span> -->
+          <span class="chip">SQL</span>
+          <span class="chip">PostGIS</span>
+          <!-- <span class="chip">GeoJSON</span> -->
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none">
+          <path d="M0 7H14M10 2L17 7L10 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <!-- 6 · Visualization -->
+      <!-- <div class="node">
+        <div class="node-stage">Visualize</div>
+        <div class="node-name">Interactive Map</div>
+        <div class="node-desc">Map-driven exploration of broadband technology and availability, with database-backed filtering rather than a static dataset</div>
+        <div class="chips">
+          <span class="chip">MapLibre GL</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Web Map</span>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <!-- <div class="legend">
+      <span class="legend-sq"></span>
+      Application / processing layer
+    </div>
+    <div class="legend">
+      <span class="legend-sq legend-sq--db"></span>
+      PostgreSQL / PostGIS
+    </div>
+    <div class="footer-rule"></div> -->
+    <div class="stat"><strong>50</strong> states</div>
+    <div class="stat"><strong>900+ million</strong> records</div>
+    <div class="stat"><strong>Biannual</strong> update cycle</div>
+  </div>
+
+</body>
+</html>
