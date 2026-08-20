@@ -132,16 +132,20 @@ function initModal() {
       const detailHTML  = modalDiv
         ? modalDiv.innerHTML
         : `<p>${slide.querySelector('.slide-desc')?.textContent ?? ''}</p>`;
-      openModal(title, detailHTML, btn);
+      const wide = modalDiv?.hasAttribute('data-modal-wide') ?? false;
+      openModal(title, detailHTML, btn, wide);
     });
 
     media.appendChild(btn);
   });
 
-  function openModal(title, detailHTML, trigger) {
+  const panel = overlay.querySelector('.modal-panel');
+
+  function openModal(title, detailHTML, trigger, wide = false) {
     lastFocused       = trigger;
     titleEl.textContent = title;
     detailEl.innerHTML  = detailHTML;
+    panel.classList.toggle('modal-panel--wide', wide);
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -152,6 +156,7 @@ function initModal() {
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    panel.classList.remove('modal-panel--wide');
     lastFocused?.focus();
   }
 

@@ -135,7 +135,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">Oil &amp; Gas Well ELT Pipeline</h3>
-                    <p class="slide-desc">End-to-end pipeline scraping 40+ state agencies into a unified PostGIS schema, serving 3.5M+ wells to a public data portal.</p>
+                    <p class="slide-desc">Single source pipeline utilizing their API to populate materialized views for applications and analysts alike to access.</p>
                   </div>
                 </div>
               </article>
@@ -257,11 +257,26 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
+                    <img src="assets/images/spatial-analysis/drone_path.png" alt="Dual line of sight analysis">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Approved path for a drone while avoiding objects </h3>
+                    <p class="slide-desc">Click "More Info" to open a notebook with an interactive map containing code to approve a flight path for a drone. This was purely for demonstration purposes and contains the kitchen sink when it comes to libraries involved.</p>
+                  </div>
+                </div>
+                <div class="slide-modal" data-modal-wide hidden>
+                    <iframe src="assets/images/spatial-analysis/drone_path_approval.html" title="Drone path approval notebook" loading="lazy"></iframe>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
                     <img src="assets/images/static-maps/dual_los.png" alt="Dual line of sight analysis">
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Dual Line of Sight</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Line of Sight</h3>
+                    <p class="slide-desc">We were looking to see what rooftops within a mile were visible from an antenna on our building.</p>
                   </div>
                 </div>
               </article>
@@ -269,14 +284,11 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Analysis Output</p>
-                      <code class="ph-hint">assets/images/analysis-2.jpg</code>
-                    </div>
+                    <img src="assets/images/static-maps/wi_drivetimes.png">
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Analysis Title</h3>
-                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
+                    <h3 class="slide-title">Drive Time Isochrones</h3>
+                    <p class="slide-desc">Used Valhalla to determine dive times from Chicago.</p>
                   </div>
                 </div>
               </article>
@@ -284,38 +296,11 @@
               <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
-                    <div class="img-placeholder img-placeholder--analysis">
-                      <p class="ph-label">Analysis Output</p>
-                      <code class="ph-hint">assets/images/analysis-3.jpg</code>
-                    </div>
+                    <img src="assets/images/static-maps/household_counts_fullstate_30pct.png">
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Analysis Title</h3>
-                    <p class="slide-desc">Methodology, datasets used, and the spatial question this analysis was designed to answer.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/household_counts_fullstate_30pct.png" alt="Household counts statewide map">
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Household Counts</h3>
-                    <p class="slide-desc">Map title and description.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/wi_drivetimes.png" alt="Wisconsin drive times map">
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Wisconsin Drive Times</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Census Heatmap</h3>
+                    <p class="slide-desc">Example of a heatmap based on the distribution of households in Wisconsin.</p>
                   </div>
                 </div>
               </article>
@@ -327,7 +312,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">White Loop</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">Elevation profile of a hike.</p>
                   </div>
                 </div>
               </article>
@@ -370,7 +355,31 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">Adirondacks</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">Created a grid of columns in Blender assigning heights based on elevation to cast shadows.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/halfdome.jpg" alt="Bivariate map">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">3D Printed Model of Yosemite</h3>
+                    <p class="slide-desc">Turn a DEM of an area of interest into a 3D printed model.</p>
+                  </div>
+                </div>
+              </article>
+
+              <article class="carousel-slide">
+                <div class="slide-content">
+                  <div class="slide-media slide-media--image">
+                    <img src="assets/images/static-maps/glossy_square_30pct.png" alt="Glossy square map">
+                  </div>
+                  <div class="slide-caption">
+                    <h3 class="slide-title">Glossy Rendering</h3>
+                    <p class="slide-desc">A poster style rendering of a Digital Elevation Model (DEM).</p>
                   </div>
                 </div>
               </article>
@@ -382,7 +391,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">Bivariate Map</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">A way of displaying the interaction of two variables on the same map.</p>
                   </div>
                 </div>
               </article>
@@ -394,7 +403,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">California Topo</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">Topo map of a property generated from survey elevations.</p>
                   </div>
                 </div>
               </article>
@@ -406,7 +415,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">Campus Map</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">Generic map of a high school campus.</p>
                   </div>
                 </div>
               </article>
@@ -418,19 +427,7 @@
                   </div>
                   <div class="slide-caption">
                     <h3 class="slide-title">Delayed Flights</h3>
-                    <p class="slide-desc">Map title and description.</p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="carousel-slide">
-                <div class="slide-content">
-                  <div class="slide-media slide-media--image">
-                    <img src="assets/images/static-maps/glossy_square_30pct.png" alt="Glossy square map">
-                  </div>
-                  <div class="slide-caption">
-                    <h3 class="slide-title">Glossy Square</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <p class="slide-desc">A fun gif depicting on time vs delayed domestic flights out of Boston.</p>
                   </div>
                 </div>
               </article>
@@ -441,8 +438,8 @@
                     <img src="assets/images/static-maps/glossy_topo_small.png" alt="Glossy topographic map">
                   </div>
                   <div class="slide-caption">
-                    <h3 class="slide-title">Glossy Topo</h3>
-                    <p class="slide-desc">Map title and description.</p>
+                    <h3 class="slide-title">Historic Hillshade</h3>
+                    <p class="slide-desc">Hillshade added to an old topo map of Glacier National Park using Blender.</p>
                   </div>
                 </div>
               </article>
@@ -471,7 +468,7 @@
                 </div>
               </article> -->
 
-              <article class="carousel-slide">
+              <!-- <article class="carousel-slide">
                 <div class="slide-content">
                   <div class="slide-media slide-media--image">
                     <img src="assets/images/static-maps/square_gray_bluefill_v2.png" alt="Square map with blue fill">
@@ -481,7 +478,7 @@
                     <p class="slide-desc">Map title and description.</p>
                   </div>
                 </div>
-              </article>
+              </article> -->
 
               <!-- <article class="carousel-slide">
                 <div class="slide-content">

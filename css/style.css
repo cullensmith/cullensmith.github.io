@@ -577,6 +577,25 @@ a {
   transform: translateY(0);
 }
 
+.modal-panel--wide {
+  max-width: 92vw;
+  width: 92vw;
+  max-height: 92vh;
+  padding: 1.25rem;
+}
+
+.modal-panel--wide .modal-detail {
+  height: calc(92vh - 5rem);
+  overflow: hidden;
+}
+
+.modal-panel--wide .modal-detail iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
 .modal-close {
   position: absolute;
   top: 1rem;
